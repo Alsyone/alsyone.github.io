@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Отслеживание цены Bitcoin (v3.6.1)</title>
+    <title>Отслеживание цены Bitcoin (v3.6.3)</title>
     <style>
         /* --- БАЗОВЫЕ ПЕРЕМЕННЫЕ И СТИЛИ --- */
         :root {
@@ -20,6 +20,10 @@
             --btn-add-bg-default-light: #4CAF50;
             --btn-remove-bg-default-light: #f44336;
             --btn-test-bg-default-light: #2196F3;
+            --btn-export-bg-default-light: #9e9e9e;
+            --btn-import-bg-default-light: #9e9e9e;
+            --btn-clear-bg-default-light: #f44336;
+            --btn-save-bg-default-light: #2196F3;
             --btn-text-color-default-light: white;
             /* --- Цвета статусов бирж (Светлая тема) - Значения по умолчанию --- */
             --exchange-ok-bg-default-light: #e8f5e9;
@@ -46,7 +50,7 @@
             --app-bg-below-default-light: var(--status-below-bg-default-light);
             --app-bg-stopped-default-light: var(--bg-color-default-light);
             /* --- Цвет графика (Светлая тема) - Значения по умолчанию --- */
-            --chart-line-color-default-light: #FFD700; /* #000;*/
+            --chart-line-color-default-light: #FFD700;
             /* --- Переменные для текущих цветов (будут изменяться) --- */
             --bg-color: var(--bg-color-default-light);
             --controls-bg: var(--controls-bg-default-light);
@@ -59,6 +63,10 @@
             --btn-add-bg: var(--btn-add-bg-default-light);
             --btn-remove-bg: var(--btn-remove-bg-default-light);
             --btn-test-bg: var(--btn-test-bg-default-light);
+            --btn-export-bg: var(--btn-export-bg-default-light);
+            --btn-import-bg: var(--btn-import-bg-default-light);
+            --btn-clear-bg: var(--btn-clear-bg-default-light);
+            --btn-save-bg: var(--btn-save-bg-default-light);
             --btn-text-color: var(--btn-text-color-default-light);
             --exchange-ok-bg: var(--exchange-ok-bg-default-light);
             --exchange-error-bg: var(--exchange-error-bg-default-light);
@@ -84,6 +92,7 @@
             /* --- Остальные переменные (не цвета) --- */
             --controls-shadow: 0 2px 4px rgba(0,0,0,0.1);
             --btn-test-hover-bg: #0b7dda;
+            --btn-save-hover-bg: #0b7dda;
             --exchange-ok-border: #4CAF50;
             --exchange-error-border: #f44336;
             --exchange-net-error-border: #ff9800;
@@ -107,6 +116,10 @@
             --btn-add-bg-default-dark: #2e7d32;
             --btn-remove-bg-default-dark: #c62828;
             --btn-test-bg-default-dark: #1565c0;
+            --btn-export-bg-default-dark: #616161;
+            --btn-import-bg-default-dark: #616161;
+            --btn-clear-bg-default-dark: #c62828;
+            --btn-save-bg-default-dark: #1565c0;
             --btn-text-color-default-dark: white;
             /* --- Цвета статусов бирж (Тёмная тема) - Значения по умолчанию --- */
             --exchange-ok-bg-default-dark: #2e7d32;
@@ -146,6 +159,10 @@
             --btn-add-bg: var(--btn-add-bg-default-dark);
             --btn-remove-bg: var(--btn-remove-bg-default-dark);
             --btn-test-bg: var(--btn-test-bg-default-dark);
+            --btn-export-bg: var(--btn-export-bg-default-dark);
+            --btn-import-bg: var(--btn-import-bg-default-dark);
+            --btn-clear-bg: var(--btn-clear-bg-default-dark);
+            --btn-save-bg: var(--btn-save-bg-default-dark);
             --btn-text-color: var(--btn-text-color-default-dark);
             --exchange-ok-bg: var(--exchange-ok-bg-default-dark);
             --exchange-error-bg: var(--exchange-error-bg-default-dark);
@@ -171,6 +188,7 @@
             /* --- Остальные переменные (не цвета) --- */
             --controls-shadow: 0 2px 4px rgba(255,255,255,0.1);
             --btn-test-hover-bg: #0d47a1;
+            --btn-save-hover-bg: #0d47a1;
             --exchange-ok-border: #43a047;
             --exchange-error-border: #e53935;
             --exchange-net-error-border: #ff8f00;
@@ -189,7 +207,7 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             transition: background-color 0.3s, color 0.3s;
-            position: relative; /* Для позиционирования кнопки темы */
+            position: relative;
         }
         .controls, .exchange-controls, .sound-controls, .theme-controls, .export-controls, .stats-controls, .chart-controls, .main-status-controls {
             background-color: var(--controls-bg);
@@ -248,9 +266,11 @@
             color: var(--btn-text-color);
         }
         .controls button#startBtn {
-             width: 100%;
+             width: 200px; /* Фиксированная ширина */
              padding: 10px;
              background-color: var(--btn-start-bg);
+             display: block; /* Для центрирования */
+             margin: 10px auto; /* Центрирование */
         }
         .controls button#startBtn.running {
              background-color: var(--btn-stop-bg);
@@ -266,6 +286,21 @@
         }
         .sound-controls button.test-btn:hover {
              background-color: var(--btn-test-hover-bg);
+        }
+        .controls button#saveSettingsBtn {
+            background-color: var(--btn-save-bg);
+        }
+        .controls button#saveSettingsBtn:hover {
+            background-color: var(--btn-save-hover-bg);
+        }
+        .export-controls button#exportSettingsBtn {
+            background-color: var(--btn-export-bg);
+        }
+        .export-controls button#importSettingsBtn {
+            background-color: var(--btn-import-bg);
+        }
+        .chart-controls button#clearChartBtn {
+            background-color: var(--btn-clear-bg);
         }
         .status {
             background-color: var(--controls-bg);
@@ -425,38 +460,77 @@
         /* Круглая кнопка переключения темы в левом верхнем углу */
         #toggleThemeBtn {
             position: fixed;
-            top: 20px; /* Отступ сверху */
-            left: 20px; /* Отступ слева */
+            top: 20px;
+            left: 20px;
             width: 40px;
             height: 40px;
             border-radius: 50%;
             border: none;
             cursor: pointer;
-            z-index: 1000; /* Поверх других элементов */
+            z-index: 1000;
             background-color: #000; /* По умолчанию чёрная (для светлой темы) */
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Тень для лучшей видимости */
-            transition: background-color 0.3s, transform 0.2s; /* Плавный переход */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: background-color 0.3s, transform 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: white;
         }
         .dark-theme #toggleThemeBtn {
             background-color: #fff; /* Белая для тёмной темы */
+            color: black;
         }
         #toggleThemeBtn:hover {
-            transform: scale(1.1); /* Лёгкое увеличение при наведении */
+            transform: scale(1.1);
         }
         #toggleThemeBtn:active {
-            transform: scale(0.95); /* Лёгкое сжатие при клике */
+            transform: scale(0.95);
         }
         /* Скрытие настроек цветов */
         .color-controls {
-            display: none; /* Временно скрыто */
+            display: none;
+        }
+        /* --- Стили для статистики --- */
+        .stats-controls h2 {
+            margin-top: 0;
+        }
+        .stats-display p {
+            margin: 5px 0;
+        }
+        /* --- Стили для отображения истории цен --- */
+        .history-controls {
+            background-color: var(--controls-bg);
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: var(--controls-shadow);
+            margin-bottom: 20px;
+        }
+        .history-controls h2 {
+            margin-top: 0;
+        }
+        .history-list {
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .history-item {
+            padding: 5px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .history-item:last-child {
+            border-bottom: none;
         }
     </style>
 </head>
 <body>
     <!-- Круглая кнопка переключения темы -->
-    <button id="toggleThemeBtn" title="Переключить тему"></button>
+    <button id="toggleThemeBtn" title="Переключить тему">🌙</button>
     <!-- Перемещённый график в самое начало -->
     <div class="chart-controls">
+        <h2>График цены BTC</h2>
         <div class="chart-container">
             <canvas id="priceChartCanvas" class="chart-canvas"></canvas>
         </div>
@@ -492,7 +566,7 @@
         </div>
         <div class="slider-container">
             <label for="debounceTimeSlider">Интервал повтора уведомлений/звуков (сек):</label>
-            <input type="range" id="debounceTimeSlider" min="1" max="60" value="1" step="1">
+            <input type="range" id="debounceTimeSlider" min="0" max="60" value="1" step="1">
             <span class="slider-value" id="debounceTimeValue">1</span>
         </div>
         <button id="saveSettingsBtn">Сохранить настройки</button>
@@ -523,6 +597,19 @@
         <div id="activeExchangesList"></div>
         <div id="availableExchangesList"></div>
     </div>
+    <div class="stats-controls">
+        <h2>Статистика</h2>
+        <div class="stats-display" id="statsDisplay">
+            <!-- Статистика будет обновляться через JS -->
+        </div>
+        <button id="resetStatsBtn">Сбросить статистику</button>
+    </div>
+    <div class="history-controls">
+        <h2>История цен (последние 20)</h2>
+        <div class="history-list" id="historyList">
+            <!-- История будет обновляться через JS -->
+        </div>
+    </div>
     <!-- Перемещённый экспорт/импорт в самый конец -->
     <div class="export-controls">
         <h2>Экспорт/Импорт настроек</h2>
@@ -535,17 +622,17 @@
         // --- ПАРАМЕТРЫ ---
         const DEBUG = false;
         const MAX_CHART_POINTS = 100;
+        const MAX_HISTORY_ITEMS = 20;
         const STATS_KEY = 'btcTrackerStats';
+        const HISTORY_KEY = 'btcTrackerHistory';
         // --- Загрузка аудио ---
         let audioAbove = new Audio();
         let audioBelow = new Audio();
         let audioError = new Audio();
-
         // Загрузка аудио по умолчанию
         audioAbove.src = 'High.mp3';
         audioBelow.src = 'Low.mp3';
         audioError.src = 'Error.mp3';
-
         function initAudio() {
             // Предварительная загрузка аудио
             audioAbove.preload = 'auto';
@@ -553,7 +640,6 @@
             audioError.preload = 'auto';
         }
         initAudio();
-
         function log(message, level = 'log') {
             if (DEBUG) {
                 if (level === 'error') console.error(message);
@@ -561,7 +647,6 @@
                 else console.log(message);
             }
         }
-
         function playSound(soundType) {
             const now = Date.now();
             if (now - lastAlertTime[soundType] < debounceTime) return;
@@ -590,7 +675,6 @@
                 log(`[Audio] Воспроизведён звук ${soundType}`);
             }
         }
-
         // --- КОНФИГУРАЦИЯ API ---
         const API_CONFIGS = {
             Binance: { 
@@ -601,10 +685,10 @@
                 url: 'https://www.okx.com/api/v5/market/ticker?instId=BTC-USDT', 
                 parse: (d) => d.data?.[0]?.last ? parseFloat(d.data[0].last) : null 
             },
-            // Gate: { 
-                // url: 'https://api.gateio.ws/api/v4/spot/tickers?currency_pair=BTC_USDT', 
-                // parse: (d) => d?.[0]?.last ? parseFloat(d[0].last) : null 
-            // },
+            Gate: { 
+                url: 'https://api.gateio.ws/api/v4/spot/tickers?currency_pair=BTC_USDT', 
+                parse: (d) => d?.[0]?.last ? parseFloat(d[0].last) : null 
+            },
             BitGet: { 
                 url: 'https://api.bitget.com/api/spot/v1/market/ticker?symbol=BTCUSDT_SPBL', 
                 parse: (d) => d?.data?.close ? parseFloat(d.data.close) : null 
@@ -625,7 +709,7 @@
         let refreshInterval = 2000;
         let fetchTimeout = 3000;
         let debounceTime = 1000;
-        let activeExchanges = ['Binance', 'Bybit', 'OKX', 'Gate', 'BitGet', 'Coinbase'];
+        let activeExchanges = ['Binance', 'Bybit', 'OKX', 'BitGet', 'Coinbase'];
         let trackingInterval = null;
         let isTrackingActive = false;
         const prices = {};
@@ -637,6 +721,7 @@
             lastTriggerTime: { above_upper: 0, below_lower: 0, all_error: 0 }
         };
         let priceHistory = [];
+        let historyList = [];
         let previousPrices = {};
         // --- ЭЛЕМЕНТЫ DOM ---
         const startBtn = document.getElementById('startBtn');
@@ -661,6 +746,7 @@
         const priceChartCanvas = document.getElementById('priceChartCanvas');
         const clearChartBtn = document.getElementById('clearChartBtn');
         const chartCtx = priceChartCanvas.getContext('2d');
+        const historyListDiv = document.getElementById('historyList');
         // --- НОВЫЕ ЭЛЕМЕНТЫ ДЛЯ СЛАЙДЕРОВ ---
         const refreshIntervalSlider = document.getElementById('refreshIntervalSlider');
         const fetchTimeoutSlider = document.getElementById('fetchTimeoutSlider');
@@ -675,7 +761,6 @@
         const testAboveBtn = document.getElementById('testAboveBtn');
         const testBelowBtn = document.getElementById('testBelowBtn');
         const testErrorBtn = document.getElementById('testErrorBtn');
-
         // --- ЛОГИКА УВЕДОМЛЕНИЙ ---
         function showNotification(message, isError = false, isNetworkError = false) {
             const n = document.createElement('div');
@@ -801,6 +886,10 @@
             const savedTheme = localStorage.getItem('appTheme') || 'light';
             if (savedTheme === 'dark') {
                 document.body.classList.add('dark-theme');
+                toggleThemeBtn.textContent = '☀️'; // Значок солнца для тёмной темы
+            } else {
+                // Для светлой темы текст кнопки уже установлен как '🌙'
+                document.body.classList.remove('dark-theme');
             }
             updateChartColor();
             log("[Theme] Тема загружена: " + savedTheme);
@@ -810,8 +899,9 @@
             log("[Theme] Тема сохранена: " + (isDark ? 'dark' : 'light'));
         }
         function toggleTheme() {
-            document.body.classList.toggle('dark-theme');
-            const isDark = document.body.classList.contains('dark-theme');
+            const isDark = !document.body.classList.contains('dark-theme');
+            document.body.classList.toggle('dark-theme', isDark);
+            toggleThemeBtn.textContent = isDark ? '☀️' : '🌙';
             saveTheme(isDark);
             updateChartColor();
             // Обновляем отображение статуса, чтобы фон body тоже обновился
@@ -837,7 +927,8 @@
                     isTrackingActive: isTrackingActive
                 },
                 stats: stats,
-                priceHistory: priceHistory
+                priceHistory: priceHistory,
+                historyList: historyList
             };
             const dataStr = JSON.stringify(settings, null, 2);
             const dataBlob = new Blob([dataStr], { type: 'application/json' });
@@ -894,7 +985,12 @@
                     if (importedData.priceHistory) {
                         priceHistory = [...importedData.priceHistory];
                         drawChart();
-                        log("[Import] История цен импортирована.");
+                        log("[Import] История цен для графика импортирована.");
+                    }
+                    if (importedData.historyList) {
+                        historyList = [...importedData.historyList];
+                        updateHistoryListDisplay();
+                        log("[Import] История цен для списка импортирована.");
                     }
                     alert("Настройки успешно импортированы.");
                 } catch (e) {
@@ -919,6 +1015,14 @@
                 log("[Stats] Ошибка загрузки статистики: " + e.message, 'error');
             }
         }
+        function saveStats() {
+            try {
+                localStorage.setItem(STATS_KEY, JSON.stringify(stats));
+                log("[Stats] Статистика сохранена в localStorage.");
+            } catch (e) {
+                log("[Stats] Ошибка сохранения статистики: " + e.message, 'error');
+            }
+        }
         function updateStatsDisplay() {
             statsDisplay.innerHTML = `
                 <p>Срабатываний "Выше порога": ${stats.alerts.above_upper}</p>
@@ -935,7 +1039,60 @@
                 lastTriggerTime: { above_upper: 0, below_lower: 0, all_error: 0 }
             };
             updateStatsDisplay();
+            saveStats();
             log("[Stats] Статистика сброшена.");
+        }
+        // --- ЛОГИКА ИСТОРИИ ЦЕН ---
+        function loadHistory() {
+            try {
+                const savedHistory = localStorage.getItem(HISTORY_KEY);
+                if (savedHistory) {
+                    const parsed = JSON.parse(savedHistory);
+                    if (Array.isArray(parsed)) {
+                        historyList = parsed;
+                        log("[History] История цен загружена из localStorage.");
+                    }
+                }
+            } catch (e) {
+                log("[History] Ошибка загрузки истории: " + e.message, 'error');
+            }
+        }
+        function saveHistory() {
+            try {
+                localStorage.setItem(HISTORY_KEY, JSON.stringify(historyList));
+                log("[History] История цен сохранена в localStorage.");
+            } catch (e) {
+                log("[History] Ошибка сохранения истории: " + e.message, 'error');
+            }
+        }
+        function addHistoryItem(avgPrice) {
+            if (avgPrice && !isNaN(avgPrice)) {
+                const now = new Date();
+                const historyItem = {
+                    timestamp: now.getTime(),
+                    avgPrice: avgPrice,
+                    formattedTime: now.toLocaleString('ru-RU')
+                };
+                historyList.unshift(historyItem);
+                if (historyList.length > MAX_HISTORY_ITEMS) {
+                    historyList = historyList.slice(0, MAX_HISTORY_ITEMS);
+                }
+                updateHistoryListDisplay();
+                saveHistory();
+            }
+        }
+        function updateHistoryListDisplay() {
+            historyListDiv.innerHTML = '';
+            if (historyList.length === 0) {
+                historyListDiv.innerHTML = '<div class="history-item">Нет данных</div>';
+                return;
+            }
+            historyList.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'history-item';
+                itemDiv.textContent = `${item.formattedTime} - $${item.avgPrice.toFixed(2)}`;
+                historyListDiv.appendChild(itemDiv);
+            });
         }
         // --- ЛОГИКА ГРАФИКА ---
         function updatePriceHistory(avgPrice) {
@@ -997,7 +1154,6 @@
         function updateExchangeListsUI() {
             activeExchangesListDiv.innerHTML = '<h3>Активные биржи</h3>';
             availableExchangesListDiv.innerHTML = '<h3>Доступные биржи</h3>';
-
             ALL_EXCHANGES.forEach(ex => {
                 if (activeExchanges.includes(ex)) {
                     const item = document.createElement('div');
@@ -1011,15 +1167,14 @@
                     availableExchangesListDiv.appendChild(item);
                 }
             });
-
             document.querySelectorAll('.remove-btn').forEach(btn => btn.addEventListener('click', () => {
                 const ex = btn.getAttribute('data-exchange');
                 activeExchanges = activeExchanges.filter(e => e !== ex);
                 updateExchangeListsUI();
                 delete prices[ex]; delete errors[ex]; delete previousPrices[ex];
+                updateExchangeDisplay(ex, null, true, true); // Удаляем из отображения
                 saveSettings();
             }));
-
             document.querySelectorAll('.add-btn').forEach(btn => btn.addEventListener('click', () => {
                 const ex = btn.getAttribute('data-exchange');
                 if (!activeExchanges.includes(ex)) {
@@ -1044,19 +1199,16 @@
                 log("[Settings] Интервал обновления изменён на лету: " + refreshInterval);
             }
         });
-
         fetchTimeoutSlider.addEventListener('input', () => {
             fetchTimeoutValue.textContent = fetchTimeoutSlider.value;
             fetchTimeout = parseInt(fetchTimeoutSlider.value) * 1000;
             log("[Settings] Таймаут запроса изменён на лету: " + fetchTimeout);
         });
-
         debounceTimeSlider.addEventListener('input', () => {
             debounceTimeValue.textContent = debounceTimeSlider.value;
             debounceTime = parseInt(debounceTimeSlider.value) * 1000;
             log("[Settings] Интервал повтора изменён на лету: " + debounceTime);
         });
-
         // --- ОБРАБОТЧИКИ АУДИО ---
         audioAboveFile.addEventListener('change', (e) => {
             if (e.target.files.length > 0) {
@@ -1066,7 +1218,6 @@
                 log("[Audio] Загружен файл для 'Выше порога': " + file.name);
             }
         });
-
         audioBelowFile.addEventListener('change', (e) => {
             if (e.target.files.length > 0) {
                 const file = e.target.files[0];
@@ -1075,7 +1226,6 @@
                 log("[Audio] Загружен файл для 'Ниже порога': " + file.name);
             }
         });
-
         audioErrorFile.addEventListener('change', (e) => {
             if (e.target.files.length > 0) {
                 const file = e.target.files[0];
@@ -1084,22 +1234,18 @@
                 log("[Audio] Загружен файл для 'Ошибка': " + file.name);
             }
         });
-
         testAboveBtn.addEventListener('click', () => {
             audioAbove.currentTime = 0;
             audioAbove.play().catch(e => log("[Audio] Ошибка теста 'Выше': " + e.message, 'error'));
         });
-
         testBelowBtn.addEventListener('click', () => {
             audioBelow.currentTime = 0;
             audioBelow.play().catch(e => log("[Audio] Ошибка теста 'Ниже': " + e.message, 'error'));
         });
-
         testErrorBtn.addEventListener('click', () => {
             audioError.currentTime = 0;
             audioError.play().catch(e => log("[Audio] Ошибка теста 'Ошибка': " + e.message, 'error'));
         });
-
         // --- ВАЛИДАЦИЯ ---
         function validateThresholds() {
             const u = parseFloat(upperInput.value); const l = parseFloat(lowerInput.value);
@@ -1111,7 +1257,6 @@
             else if (l > u) { lowerInput.classList.add('error-validation'); lowerErrorDiv.style.display = 'block'; v = false; }
             return v;
         }
-
         // --- ОСНОВНАЯ ЛОГИКА ПОЛУЧЕНИЯ ЦЕН ---
         async function fetchPrices() {
             if (!isTrackingActive) return;
@@ -1140,8 +1285,13 @@
                 });
                 const results = await Promise.all(promises);
                 results.forEach(r => {
-                    if (r.error) { errors[r.exchange] = { error: true, isNetworkError: r.isNetworkError }; prices[r.exchange] = null; }
-                    else { errors[r.exchange] = { error: false, isNetworkError: false }; prices[r.exchange] = r.price; }
+                    if (r.error) {
+                        errors[r.exchange] = { error: true, isNetworkError: r.isNetworkError };
+                        prices[r.exchange] = null;
+                    } else {
+                        errors[r.exchange] = { error: false, isNetworkError: false };
+                        prices[r.exchange] = r.price;
+                    }
                     updateExchangeDisplay(r.exchange, r.price, r.error, r.isNetworkError);
                 });
                 let newStatus = 'stable';
@@ -1167,6 +1317,7 @@
                 if (validCount > 0) {
                     const avgPrice = totalValidPrice / validCount;
                     updatePriceHistory(avgPrice);
+                    addHistoryItem(avgPrice); // Добавляем в историю
                 }
                 const now = Date.now();
                 if (currentStatus === 'above_upper' && (now - lastAlertTime.above_upper >= debounceTime)) {
@@ -1247,10 +1398,12 @@
         loadSettings();
         loadTheme(); // Загружает тему
         loadStats();
+        loadHistory(); // Загружает историю
         updateExchangeListsUI();
         activeExchanges.forEach(ex => updateExchangeDisplay(ex, null, true, true));
         updateCurrentStatusDisplay(currentStatus);
         updateStatsDisplay();
+        updateHistoryListDisplay(); // Обновляем список истории
         drawChart(); // Рисуем график (даже если пустой)
         if (isTrackingActive) {
              log("[App] Обнаружен активный режим, запускаем...");
@@ -1260,9 +1413,7 @@
                  }
              }, 100);
         }
-        log("[App] Приложение v3.6.1 инициализировано. Активные биржи:", activeExchanges);
+        log("[App] Приложение v3.6.3 инициализировано. Активные биржи:", activeExchanges);
     </script>
 </body>
 </html>
-
-
