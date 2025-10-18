@@ -596,7 +596,7 @@
             Binance: { url: 'https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT', parse: (d) => d.price ? parseFloat(d.price) : null },
             OKX: { url: 'https://www.okx.com/api/v5/market/ticker?instId=BTC-USDT', parse: (d) => d.data && d.data[0] && d.data[0].last ? parseFloat(d.data[0].last) : null },
             Gate: { url: 'https://api.gateio.ws/api/v4/spot/tickers?currency_pair=BTC_USDT', parse: (d) => d[0] && d[0].last ? parseFloat(d[0].last) : null },
-            BitGet: { url: 'https://api.bitget.com/api/v2/market/ticker?symbol=BTCUSDT_UMCBL', parse: (d) => d.data && d.data[0] && d.data[0].lastPrice ? parseFloat(d.data[0].lastPrice) : null },
+            BitGet: { url: 'https://api.bitget.com/api/spot/v1/market/ticker?symbol=BTCUSDT_SPBL', parse: (d) => d.data && d.data[0] && d.data[0].lastPrice ? parseFloat(d.data[0].lastPrice) : null },
             Bybit: { url: 'https://api.bybit.com/v5/market/tickers?category=spot&symbol=BTCUSDT', parse: (d) => d.result && d.result.list && d.result.list[0] && d.result.list[0].lastPrice ? parseFloat(d.result.list[0].lastPrice) : null },
             Coinbase: { url: 'https://api.exchange.coinbase.com/products/BTC-USD/ticker', parse: (d) => d.price ? parseFloat(d.price) : null }
         };
@@ -604,12 +604,12 @@
         // --- СОСТОЯНИЯ ПРИЛОЖЕНИЯ ---
         let upperThreshold = 111000;
         let lowerThreshold = 110000;
-        let refreshInterval = 5000;
-        let fetchTimeout = 10000;
-        let debounceTime = 3000;
-        let activeExchanges = ['Binance', 'Bybit', 'OKX'];
+        let refreshInterval = 2000;
+        let fetchTimeout = 3000;
+        let debounceTime = 1000;
+        let activeExchanges = ['Binance', 'Bybit', 'OKX', 'BitGet', 'CoinBase'];
         let trackingInterval = null;
-        let isTrackingActive = false;
+        let isTrackingActive = true;
         const prices = {};
         const errors = {};
         let lastAlertTime = { above_upper: 0, below_lower: 0, all_error: 0 };
@@ -1245,4 +1245,5 @@
         log("[App] Приложение v3.6.1 инициализировано. Активные биржи:", activeExchanges);
     </script>
 </body>
+
 </html>
