@@ -482,18 +482,18 @@
         <!-- Горизонтальные слайдеры -->
         <div class="slider-container">
             <label for="refreshIntervalSlider">Интервал обновления (сек):</label>
-            <input type="range" id="refreshIntervalSlider" min="1" max="30" value="5" step="1">
-            <span class="slider-value" id="refreshIntervalValue">5</span>
+            <input type="range" id="refreshIntervalSlider" min="1" max="30" value="2" step="1">
+            <span class="slider-value" id="refreshIntervalValue">2</span>
         </div>
         <div class="slider-container">
             <label for="fetchTimeoutSlider">Таймаут запроса (сек):</label>
-            <input type="range" id="fetchTimeoutSlider" min="1" max="30" value="10" step="1">
-            <span class="slider-value" id="fetchTimeoutValue">10</span>
+            <input type="range" id="fetchTimeoutSlider" min="1" max="30" value="3" step="1">
+            <span class="slider-value" id="fetchTimeoutValue">3</span>
         </div>
         <div class="slider-container">
             <label for="debounceTimeSlider">Интервал повтора уведомлений/звуков (сек):</label>
-            <input type="range" id="debounceTimeSlider" min="1" max="60" value="3" step="1">
-            <span class="slider-value" id="debounceTimeValue">3</span>
+            <input type="range" id="debounceTimeSlider" min="1" max="60" value="1" step="1">
+            <span class="slider-value" id="debounceTimeValue">1</span>
         </div>
         <button id="saveSettingsBtn">Сохранить настройки</button>
     </div>
@@ -625,7 +625,7 @@
         let refreshInterval = 2000;
         let fetchTimeout = 3000;
         let debounceTime = 1000;
-        let activeExchanges = ['Binance', 'Bybit', 'OKX', 'Gaie', 'BitGet', 'Coinbase'];
+        let activeExchanges = ['Binance', 'Bybit', 'OKX', 'Gate', 'BitGet', 'Coinbase'];
         let trackingInterval = null;
         let isTrackingActive = false;
         const prices = {};
@@ -1265,6 +1265,7 @@
 </body>
 
 </html>
+
 
 
 
