@@ -593,12 +593,30 @@
 
         // --- КОНФИГУРАЦИЯ API ---
         const API_CONFIGS = {
-            Binance: { url: 'https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT', parse: (d) => d.price ? parseFloat(d.price) : null },
-            OKX: { url: 'https://www.okx.com/api/v5/market/ticker?instId=BTC-USDT', parse: (d) => d.data && d.data[0] && d.data[0].last ? parseFloat(d.data[0].last) : null },
-            Gate: { url: 'https://api.gateio.ws/api/v4/spot/tickers?currency_pair=BTC_USDT', parse: (d) => d[0] && d[0].last ? parseFloat(d[0].last) : null },
-            BitGet: { url: 'https://api.bitget.com/api/spot/v1/market/ticker?symbol=BTCUSDT_SPBL', parse: (d) => d.data && d.data[0] && d.data[0].lastPrice ? parseFloat(d.data[0].lastPrice) : null },
-            Bybit: { url: 'https://api.bybit.com/v5/market/tickers?category=spot&symbol=BTCUSDT', parse: (d) => d.result && d.result.list && d.result.list[0] && d.result.list[0].lastPrice ? parseFloat(d.result.list[0].lastPrice) : null },
-            Coinbase: { url: 'https://api.exchange.coinbase.com/products/BTC-USD/ticker', parse: (d) => d.price ? parseFloat(d.price) : null }
+            Binance: { 
+                url: 'https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT', 
+                parse: (d) => d.price ? parseFloat(d.price) : null 
+            },
+            OKX: { 
+                url: 'https://www.okx.com/api/v5/market/ticker?instId=BTC-USDT', 
+                parse: (d) => d.data?.[0]?.last ? parseFloat(d.data[0].last) : null 
+            },
+            Gate: { 
+                url: 'https://api.gateio.ws/api/v4/spot/tickers?currency_pair=BTC_USDT', 
+                parse: (d) => d?.[0]?.last ? parseFloat(d[0].last) : null 
+            },
+            BitGet: { 
+                url: 'https://api.bitget.com/api/spot/v1/market/ticker?symbol=BTCUSDT_SPBL', 
+                parse: (d) => d?.data?.close ? parseFloat(d.data.close) : null 
+            },
+            Bybit: { 
+                url: 'https://api.bybit.com/v5/market/tickers?category=spot&symbol=BTCUSDT', 
+                parse: (d) => d?.result?.list?.[0]?.lastPrice ? parseFloat(d.result.list[0].lastPrice) : null 
+            },
+            Coinbase: { 
+                url: 'https://api.exchange.coinbase.com/products/BTC-USD/ticker', 
+                parse: (d) => d?.price ? parseFloat(d.price) : null 
+            }
         };
         const ALL_EXCHANGES = Object.keys(API_CONFIGS);
         // --- СОСТОЯНИЯ ПРИЛОЖЕНИЯ ---
@@ -607,7 +625,7 @@
         let refreshInterval = 2000;
         let fetchTimeout = 3000;
         let debounceTime = 1000;
-        let activeExchanges = ['Binance', 'Bybit', 'OKX', 'Coinbase'];
+        let activeExchanges = ['Binance', 'Bybit', 'OKX', 'Gaie', 'BitGet', 'Coinbase'];
         let trackingInterval = null;
         let isTrackingActive = false;
         const prices = {};
@@ -1247,5 +1265,6 @@
 </body>
 
 </html>
+
 
 
