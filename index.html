@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Отслеживание цены Bitcoin (v3.6)</title>
+    <title>Отслеживание цены Bitcoin (v3.6.1)</title>
     <style>
         /* --- БАЗОВЫЕ ПЕРЕМЕННЫЕ И СТИЛИ --- */
         :root {
@@ -14,7 +14,6 @@
             --input-border-default-light: #ccc;
             --input-error-border-default-light: #f44336;
             --input-error-bg-default-light: #ffebee;
-
             /* --- Цвета кнопок (Светлая тема) - Значения по умолчанию --- */
             --btn-start-bg-default-light: #4CAF50;
             --btn-stop-bg-default-light: #f44336;
@@ -22,14 +21,12 @@
             --btn-remove-bg-default-light: #f44336;
             --btn-test-bg-default-light: #2196F3;
             --btn-text-color-default-light: white;
-
             /* --- Цвета статусов бирж (Светлая тема) - Значения по умолчанию --- */
             --exchange-ok-bg-default-light: #e8f5e9;
             --exchange-error-bg-default-light: #ffebee;
             --exchange-net-error-bg-default-light: #fff3e0;
             --price-up-bg-default-light: #c8e6c9;
             --price-down-bg-default-light: #ffcdd2;
-
             /* --- Цвета статусов приложения (Светлая тема) - Значения по умолчанию --- */
             --status-stable-bg-default-light: #e8f5e9;
             --status-disconnected-bg-default-light: #ffebee;
@@ -37,23 +34,19 @@
             --status-below-bg-default-light: #f3e5f5;
             --status-stopped-bg-default-light: #bdbdbd;
             --status-text-color-default-light: #000;
-
             /* --- Цвета уведомлений (Светлая тема) - Значения по умолчанию --- */
             --alert-bg-default-light: #4CAF50;
             --error-alert-bg-default-light: #f44336;
             --network-error-alert-bg-default-light: #ff9800;
             --notification-text-color-default-light: white;
-
             /* --- Цвета фона приложения по статусу (Светлая тема) - Значения по умолчанию --- */
             --app-bg-stable-default-light: var(--status-stable-bg-default-light);
             --app-bg-disconnected-default-light: var(--status-disconnected-bg-default-light);
             --app-bg-above-default-light: var(--status-above-bg-default-light);
             --app-bg-below-default-light: var(--status-below-bg-default-light);
             --app-bg-stopped-default-light: var(--bg-color-default-light);
-
             /* --- Цвет графика (Светлая тема) - Значения по умолчанию --- */
-            --chart-line-color-default-light: #FFD700;
-
+            --chart-line-color-default-light: #FFD700; /* #000;*/
             /* --- Переменные для текущих цветов (будут изменяться) --- */
             --bg-color: var(--bg-color-default-light);
             --controls-bg: var(--controls-bg-default-light);
@@ -61,40 +54,33 @@
             --input-border: var(--input-border-default-light);
             --input-error-border: var(--input-error-border-default-light);
             --input-error-bg: var(--input-error-bg-default-light);
-
             --btn-start-bg: var(--btn-start-bg-default-light);
             --btn-stop-bg: var(--btn-stop-bg-default-light);
             --btn-add-bg: var(--btn-add-bg-default-light);
             --btn-remove-bg: var(--btn-remove-bg-default-light);
             --btn-test-bg: var(--btn-test-bg-default-light);
             --btn-text-color: var(--btn-text-color-default-light);
-
             --exchange-ok-bg: var(--exchange-ok-bg-default-light);
             --exchange-error-bg: var(--exchange-error-bg-default-light);
             --exchange-net-error-bg: var(--exchange-net-error-bg-default-light);
             --price-up-bg: var(--price-up-bg-default-light);
             --price-down-bg: var(--price-down-bg-default-light);
-
             --status-stable-bg: var(--status-stable-bg-default-light);
             --status-disconnected-bg: var(--status-disconnected-bg-default-light);
             --status-above-bg: var(--status-above-bg-default-light);
             --status-below-bg: var(--status-below-bg-default-light);
             --status-stopped-bg: var(--status-stopped-bg-default-light);
             --status-text-color: var(--status-text-color-default-light);
-
             --alert-bg: var(--alert-bg-default-light);
             --error-alert-bg: var(--error-alert-bg-default-light);
             --network-error-alert-bg: var(--network-error-alert-bg-default-light);
             --notification-text-color: var(--notification-text-color-default-light);
-
             --app-bg-stable: var(--app-bg-stable-default-light);
             --app-bg-disconnected: var(--app-bg-disconnected-default-light);
             --app-bg-above: var(--app-bg-above-default-light);
             --app-bg-below: var(--app-bg-below-default-light);
             --app-bg-stopped: var(--app-bg-stopped-default-light);
-
             --chart-line-color: var(--chart-line-color-default-light);
-
             /* --- Остальные переменные (не цвета) --- */
             --controls-shadow: 0 2px 4px rgba(0,0,0,0.1);
             --btn-test-hover-bg: #0b7dda;
@@ -107,7 +93,6 @@
             --status-below-color: #7b1fa2;
             --status-stopped-color: #555;
         }
-
         .dark-theme {
             /* --- Основные цвета (Тёмная тема) - Значения по умолчанию --- */
             --bg-color-default-dark: #121212;
@@ -116,7 +101,6 @@
             --input-border-default-dark: #444;
             --input-error-border-default-dark: #d32f2f;
             --input-error-bg-default-dark: #332222;
-
             /* --- Цвета кнопок (Тёмная тема) - Значения по умолчанию --- */
             --btn-start-bg-default-dark: #2e7d32;
             --btn-stop-bg-default-dark: #c62828;
@@ -124,14 +108,12 @@
             --btn-remove-bg-default-dark: #c62828;
             --btn-test-bg-default-dark: #1565c0;
             --btn-text-color-default-dark: white;
-
             /* --- Цвета статусов бирж (Тёмная тема) - Значения по умолчанию --- */
             --exchange-ok-bg-default-dark: #2e7d32;
             --exchange-error-bg-default-dark: #c62828;
             --exchange-net-error-bg-default-dark: #ef6c00;
             --price-up-bg-default-dark: #388e3c;
             --price-down-bg-default-dark: #d32f2f;
-
             /* --- Цвета статусов приложения (Тёмная тема) - Значения по умолчанию --- */
             --status-stable-bg-default-dark: #2e7d32;
             --status-disconnected-bg-default-dark: #c62828;
@@ -139,23 +121,19 @@
             --status-below-bg-default-dark: #7b1fa2;
             --status-stopped-bg-default-dark: #616161;
             --status-text-color-default-dark: #e0e0e0;
-
             /* --- Цвета уведомлений (Тёмная тема) - Значения по умолчанию --- */
             --alert-bg-default-dark: #4CAF50;
             --error-alert-bg-default-dark: #f44336;
             --network-error-alert-bg-default-dark: #ff9800;
             --notification-text-color-default-dark: white;
-
             /* --- Цвета фона приложения по статусу (Тёмная тема) - Значения по умолчанию --- */
             --app-bg-stable-default-dark: var(--status-stable-bg-default-dark);
             --app-bg-disconnected-default-dark: var(--status-disconnected-bg-default-dark);
             --app-bg-above-default-dark: var(--status-above-bg-default-dark);
             --app-bg-below-default-dark: var(--status-below-bg-default-dark);
             --app-bg-stopped-default-dark: var(--bg-color-default-dark);
-
             /* --- Цвет графика (Тёмная тема) - Значения по умолчанию --- */
-            --chart-line-color-default-dark: #ffffff;
-
+            --chart-line-color-default-dark: #FFD700;
             /* --- Переопределение текущих переменных для тёмной темы --- */
             --bg-color: var(--bg-color-default-dark);
             --controls-bg: var(--controls-bg-default-dark);
@@ -163,40 +141,33 @@
             --input-border: var(--input-border-default-dark);
             --input-error-border: var(--input-error-border-default-dark);
             --input-error-bg: var(--input-error-bg-default-dark);
-
             --btn-start-bg: var(--btn-start-bg-default-dark);
             --btn-stop-bg: var(--btn-stop-bg-default-dark);
             --btn-add-bg: var(--btn-add-bg-default-dark);
             --btn-remove-bg: var(--btn-remove-bg-default-dark);
             --btn-test-bg: var(--btn-test-bg-default-dark);
             --btn-text-color: var(--btn-text-color-default-dark);
-
             --exchange-ok-bg: var(--exchange-ok-bg-default-dark);
             --exchange-error-bg: var(--exchange-error-bg-default-dark);
             --exchange-net-error-bg: var(--exchange-net-error-bg-default-dark);
             --price-up-bg: var(--price-up-bg-default-dark);
             --price-down-bg: var(--price-down-bg-default-dark);
-
             --status-stable-bg: var(--status-stable-bg-default-dark);
             --status-disconnected-bg: var(--status-disconnected-bg-default-dark);
             --status-above-bg: var(--status-above-bg-default-dark);
             --status-below-bg: var(--status-below-bg-default-dark);
             --status-stopped-bg: var(--status-stopped-bg-default-dark);
             --status-text-color: var(--status-text-color-default-dark);
-
             --alert-bg: var(--alert-bg-default-dark);
             --error-alert-bg: var(--error-alert-bg-default-dark);
             --network-error-alert-bg: var(--network-error-alert-bg-default-dark);
             --notification-text-color: var(--notification-text-color-default-dark);
-
             --app-bg-stable: var(--app-bg-stable-default-dark);
             --app-bg-disconnected: var(--app-bg-disconnected-default-dark);
             --app-bg-above: var(--app-bg-above-default-dark);
             --app-bg-below: var(--app-bg-below-default-dark);
             --app-bg-stopped: var(--app-bg-stopped-default-dark);
-
             --chart-line-color: var(--chart-line-color-default-dark);
-
             /* --- Остальные переменные (не цвета) --- */
             --controls-shadow: 0 2px 4px rgba(255,255,255,0.1);
             --btn-test-hover-bg: #0d47a1;
@@ -209,7 +180,6 @@
             --status-below-color: #ce93d8;
             --status-stopped-color: #e0e0e0;
         }
-
         /* --- ОСНОВНЫЕ СТИЛИ --- */
         body {
             font-family: Arial, sans-serif;
@@ -221,21 +191,21 @@
             transition: background-color 0.3s, color 0.3s;
             position: relative; /* Для позиционирования кнопки темы */
         }
-        .controls, .exchange-controls, .sound-controls, .theme-controls, .export-controls, .stats-controls, .chart-controls, .color-controls {
+        .controls, .exchange-controls, .sound-controls, .theme-controls, .export-controls, .stats-controls, .chart-controls, .main-status-controls {
             background-color: var(--controls-bg);
             padding: 15px;
             border-radius: 8px;
             box-shadow: var(--controls-shadow);
             margin-bottom: 20px;
         }
-        .controls h2, .exchange-controls h2, .sound-controls h2, .theme-controls h2, .export-controls h2, .stats-controls h2, .chart-controls h2, .color-controls h2 {
+        .controls h2, .exchange-controls h2, .sound-controls h2, .theme-controls h2, .export-controls h2, .stats-controls h2, .chart-controls h2, .main-status-controls h2 {
              margin-top: 0;
         }
-        .controls label, .exchange-controls label, .sound-controls label, .theme-controls label, .export-controls label, .stats-controls label, .chart-controls label, .color-controls label {
+        .controls label, .exchange-controls label, .sound-controls label, .theme-controls label, .export-controls label, .stats-controls label, .chart-controls label, .main-status-controls label {
             display: block;
             margin-bottom: 5px;
         }
-        .controls input, .exchange-controls input, .sound-controls input, .theme-controls input, .export-controls input, .stats-controls input, .chart-controls input, .color-controls input {
+        .controls input, .exchange-controls input, .sound-controls input, .theme-controls input, .export-controls input, .stats-controls input, .chart-controls input, .main-status-controls input {
             width: 100%;
             padding: 8px;
             margin-bottom: 10px;
@@ -244,12 +214,31 @@
             background-color: var(--controls-bg);
             color: var(--text-color);
         }
-        .controls input.error-validation, .sound-controls input.error-validation, .color-controls input.error-validation {
+        .controls input.error-validation, .sound-controls input.error-validation {
              border: 2px solid var(--input-error-border);
              background-color: var(--input-error-bg);
         }
+        .slider-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .slider-container label {
+            flex: 1;
+            margin-bottom: 0;
+            margin-right: 10px;
+        }
+        .slider-container input[type="range"] {
+            flex: 2;
+            margin-bottom: 0;
+        }
+        .slider-value {
+            width: 50px;
+            text-align: center;
+            margin-left: 10px;
+        }
         /* --- Стили кнопок --- */
-        .controls button, .exchange-controls button, .sound-controls button, .theme-controls button, .export-controls button, .stats-controls button, .chart-controls button, .color-controls button {
+        .controls button, .exchange-controls button, .sound-controls button, .theme-controls button, .export-controls button, .stats-controls button, .chart-controls button, .main-status-controls button {
             padding: 8px 12px;
             margin-right: 5px;
             margin-bottom: 5px;
@@ -277,10 +266,6 @@
         }
         .sound-controls button.test-btn:hover {
              background-color: var(--btn-test-hover-bg);
-        }
-        .color-controls button.color-reset-btn {
-             background-color: #9e9e9e;
-             color: white;
         }
         .status {
             background-color: var(--controls-bg);
@@ -341,6 +326,8 @@
         }
         .exchange-item {
              margin-bottom: 10px;
+             display: inline-block;
+             margin-right: 10px;
         }
         .loading {
              display: inline-block;
@@ -434,7 +421,6 @@
              background-color: var(--controls-bg);
              color: var(--text-color);
         }
-
         /* --- НОВЫЕ СТИЛИ --- */
         /* Круглая кнопка переключения темы в левом верхнем углу */
         #toggleThemeBtn {
@@ -451,19 +437,15 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Тень для лучшей видимости */
             transition: background-color 0.3s, transform 0.2s; /* Плавный переход */
         }
-
         .dark-theme #toggleThemeBtn {
             background-color: #fff; /* Белая для тёмной темы */
         }
-
         #toggleThemeBtn:hover {
             transform: scale(1.1); /* Лёгкое увеличение при наведении */
         }
-
         #toggleThemeBtn:active {
             transform: scale(0.95); /* Лёгкое сжатие при клике */
         }
-
         /* Скрытие настроек цветов */
         .color-controls {
             display: none; /* Временно скрыто */
@@ -473,156 +455,74 @@
 <body>
     <!-- Круглая кнопка переключения темы -->
     <button id="toggleThemeBtn" title="Переключить тему"></button>
-
     <!-- Перемещённый график в самое начало -->
     <div class="chart-controls">
-        <!--  <h2>График цены BTC (последние 100 значений)</h2> -->
         <div class="chart-container">
             <canvas id="priceChartCanvas" class="chart-canvas"></canvas>
-            <span class="activity-indicator" id="activityIndicator"></span>
-			<button id="clearChartBtn">Очистить график</button>
         </div>
-
+        <button id="clearChartBtn">Очистить график</button>
     </div>
-
-    <div class="controls">
-        <!--  <h2>Настройки отслеживания BTC</h2> -->
+    <!-- Новый блок для основного статуса, бирж, индикатора и кнопки запуска -->
+    <div class="main-status-controls">
+        <h2>Статус отслеживания</h2>
+        <span class="activity-indicator" id="activityIndicator"></span>
         <div id="exchangesStatus"></div>
-        <span id="loadingIndicator" class="loading" style="display: none;">Инициализация аудио...</span>
         <div id="currentStatusDisplay" class="current-status-display status-stopped">Статус: Остановлен</div>
         <button id="startBtn">Начать отслеживание</button>
+        <span id="loadingIndicator" class="loading" style="display: none;">Инициализация аудио...</span>
+    </div>
+    <div class="controls">
+        <h2>Настройки отслеживания BTC</h2>
         <label for="upperThreshold">Верхний порог (USD):</label>
         <input type="number" id="upperThreshold" value="111000" step="0.01" min="0">
         <div id="upperThresholdError" class="validation-message">Верхний порог не может быть ниже нижнего.</div>
         <label for="lowerThreshold">Нижний порог (USD):</label>
         <input type="number" id="lowerThreshold" value="110000" step="0.01" min="0">
         <div id="lowerThresholdError" class="validation-message">Нижний порог не может быть выше верхнего.</div>
-        <label for="refreshInterval">Интервал обновления (сек):</label>
-        <input type="number" id="refreshInterval" value="5" min="1" step="1">
-        <label for="fetchTimeout">Таймаут запроса (сек):</label>
-        <input type="number" id="fetchTimeout" value="10" min="1" max="30" step="1">
-        <label for="debounceTime">Интервал повтора уведомлений/звуков (сек):</label>
-        <input type="number" id="debounceTime" value="3" min="1" max="60" step="1">
+        <!-- Горизонтальные слайдеры -->
+        <div class="slider-container">
+            <label for="refreshIntervalSlider">Интервал обновления (сек):</label>
+            <input type="range" id="refreshIntervalSlider" min="1" max="30" value="5" step="1">
+            <span class="slider-value" id="refreshIntervalValue">5</span>
+        </div>
+        <div class="slider-container">
+            <label for="fetchTimeoutSlider">Таймаут запроса (сек):</label>
+            <input type="range" id="fetchTimeoutSlider" min="1" max="30" value="10" step="1">
+            <span class="slider-value" id="fetchTimeoutValue">10</span>
+        </div>
+        <div class="slider-container">
+            <label for="debounceTimeSlider">Интервал повтора уведомлений/звуков (сек):</label>
+            <input type="range" id="debounceTimeSlider" min="1" max="60" value="3" step="1">
+            <span class="slider-value" id="debounceTimeValue">3</span>
+        </div>
         <button id="saveSettingsBtn">Сохранить настройки</button>
     </div>
-
-    <!-- Скрытие настроек темы -->
-    <!-- <div class="theme-controls"> -->
-        <!-- <h2>Настройки темы</h2> -->
-        <!-- Кнопка переключения темы теперь круглая и в углу, без текста -->
-        <!-- <button id="toggleThemeBtn">Переключить тему (Светлая/Тёмная)</button> -->
-        <!-- Скрыто, так как кнопка теперь в углу -->
-    <!-- </div> -->
-
-    <!-- Скрытие настроек цветов -->
-    <div class="color-controls">
-        <h2>Настройки цветов</h2>
-        <div class="color-setting-group">
-            <h3>Основные цвета</h3>
-            <label for="bgColorInput">Фон страницы:</label>
-            <input type="color" id="bgColorInput" value="#f0f0f0">
-            <label for="controlsBgInput">Фон панелей:</label>
-            <input type="color" id="controlsBgInput" value="#ffffff">
-            <label for="textColorInput">Цвет текста:</label>
-            <input type="color" id="textColorInput" value="#000000">
-        </div>
-        <div class="color-setting-group">
-            <h3>Цвета уведомлений</h3>
-            <label for="alertBgInput">Фон "Выше порога" (зелёный):</label>
-            <input type="color" id="alertBgInput" value="#4CAF50">
-            <label for="errorAlertBgInput">Фон "Ниже порога" (красный):</label>
-            <input type="color" id="errorAlertBgInput" value="#f44336">
-            <label for="networkErrorAlertBgInput">Фон "Ошибка сети" (оранжевый):</label>
-            <input type="color" id="networkErrorAlertBgInput" value="#ff9800">
-            <label for="notificationTextColorInput">Цвет текста уведомлений:</label>
-            <input type="color" id="notificationTextColorInput" value="#ffffff">
-        </div>
-        <div class="color-setting-group">
-            <h3>Цвета фона приложения по статусу</h3>
-            <label for="appBgStableInput">Стабильно:</label>
-            <input type="color" id="appBgStableInput" value="#e8f5e9">
-            <label for="appBgDisconnectedInput">Отключено:</label>
-            <input type="color" id="appBgDisconnectedInput" value="#ffebee">
-            <label for="appBgAboveInput">Выше порога:</label>
-            <input type="color" id="appBgAboveInput" value="#fff3e0">
-            <label for="appBgBelowInput">Ниже порога:</label>
-            <input type="color" id="appBgBelowInput" value="#f3e5f5">
-            <label for="appBgStoppedInput">Остановлено:</label>
-            <input type="color" id="appBgStoppedInput" value="#bdbdbd">
-        </div>
-        <div class="color-setting-group">
-            <h3>Цвета графика</h3>
-            <label for="chartLineColorInput">Цвет линии графика:</label>
-            <input type="color" id="chartLineColorInput" value="#000000">
-        </div>
-        <button id="resetColorsBtn" class="color-reset-btn">Сбросить цвета к теме по умолчанию</button>
-    </div>
-
-    <div class="stats-controls">
-        <!-- <h2>Статистика</h2> -->
-        <div id="statsDisplay" class="stats-display"></div>
-        <button id="resetStatsBtn">Сбросить статистику</button>
-    </div>
-
     <div class="sound-controls">
         <h2>Настройки звуков и уведомлений</h2>
         <div class="sound-setting-group">
-            <h3>Верхний Предел</h3>
-            <label for="freqAbove">Частота (Гц):</label>
-            <input type="number" id="freqAbove" value="1200" min="20" max="2000" step="1">
-            <label for="durAbove">Длительность (с):</label>
-            <input type="number" id="durAbove" value="0.15" min="0.01" max="1" step="0.01">
-            <label for="typeAbove">Тип волны:</label>
-            <select id="typeAbove">
-                <option value="sine">Синусоида</option>
-                <option value="square">Квадрат</option>
-                <option value="sawtooth">Пила</option>
-                <option value="triangle">Треугольник</option>
-            </select>
+            <h3>Цена выше верхнего порога</h3>
+            <label for="audioAboveFile">Файл звука (High.mp3):</label>
+            <input type="file" id="audioAboveFile" accept=".mp3,.wav,.ogg">
             <button id="testAboveBtn" class="test-btn">Тест</button>
         </div>
         <div class="sound-setting-group">
-            <h3>Нижний предел</h3>
-            <label for="freqBelow">Частота (Гц):</label>
-            <input type="number" id="freqBelow" value="400" min="20" max="2000" step="1">
-            <label for="durBelow">Длительность (с):</label>
-            <input type="number" id="durBelow" value="0.15" min="0.01" max="1" step="0.01">
-            <label for="typeBelow">Тип волны:</label>
-            <select id="typeBelow">
-                <option value="sine">Синусоида</option>
-                <option value="square">Квадрат</option>
-                <option value="sawtooth">Пила</option>
-                <option value="triangle">Треугольник</option>
-            </select>
+            <h3>Цена ниже нижнего порога</h3>
+            <label for="audioBelowFile">Файл звука (Low.mp3):</label>
+            <input type="file" id="audioBelowFile" accept=".mp3,.wav,.ogg">
             <button id="testBelowBtn" class="test-btn">Тест</button>
         </div>
         <div class="sound-setting-group">
             <h3>Все биржи вернули ошибку</h3>
-            <label for="freqError">Частота (Гц):</label>
-            <input type="number" id="freqError" value="400" min="20" max="2000" step="1">
-            <label for="durError">Длительность (с):</label>
-            <input type="number" id="durError" value="0.3" min="0.01" max="2" step="0.01">
-            <label for="typeError">Тип волны:</label>
-            <select id="typeError">
-                <option value="sine">Синусоида</option>
-                <option value="square">Квадрат</option>
-                <option value="sawtooth">Пила</option>
-                <option value="triangle">Треугольник</option>
-            </select>
+            <label for="audioErrorFile">Файл звука (Error.mp3):</label>
+            <input type="file" id="audioErrorFile" accept=".mp3,.wav,.ogg">
             <button id="testErrorBtn" class="test-btn">Тест</button>
         </div>
     </div>
-
     <div class="exchange-controls">
         <h2>Управление биржами</h2>
-        <div id="exchangeList"></div>
-        <label for="newExchangeSelect">Добавить биржу:</label>
-        <select id="newExchangeSelect">
-            <option value="">Выберите биржу</option>
-        </select>
-        <button id="addExchangeBtn" class="add-btn">+</button>
+        <div id="activeExchangesList"></div>
+        <div id="availableExchangesList"></div>
     </div>
-
     <!-- Перемещённый экспорт/импорт в самый конец -->
     <div class="export-controls">
         <h2>Экспорт/Импорт настроек</h2>
@@ -630,32 +530,29 @@
         <input type="file" id="importSettingsInput" accept=".json" style="display: none;">
         <button id="importSettingsBtn">Импорт настроек из файла</button>
     </div>
-
     <div id="notifications"></div>
-
     <script>
         // --- ПАРАМЕТРЫ ---
         const DEBUG = false;
         const MAX_CHART_POINTS = 100;
         const STATS_KEY = 'btcTrackerStats';
-        const CUSTOM_COLORS_KEY = 'btcTrackerCustomColors';
+        // --- Загрузка аудио ---
+        let audioAbove = new Audio();
+        let audioBelow = new Audio();
+        let audioError = new Audio();
 
-        // --- Web Audio API ---
-        let audioContext = null;
-        let audioInitialized = false;
+        // Загрузка аудио по умолчанию
+        audioAbove.src = 'High.mp3';
+        audioBelow.src = 'Low.mp3';
+        audioError.src = 'Error.mp3';
 
-        function initAudioContext() {
-            if (audioInitialized || audioContext) return;
-            const AudioContext = window.AudioContext || window.webkitAudioContext;
-            if (!AudioContext) { log("[Audio] Web Audio API не поддерживается.", 'error'); return; }
-            try {
-                audioContext = new AudioContext();
-                audioInitialized = true;
-                log("[Audio] AudioContext инициализирован.");
-            } catch (e) {
-                log("[Audio] Ошибка инициализации AudioContext: " + e.message, 'error');
-            }
+        function initAudio() {
+            // Предварительная загрузка аудио
+            audioAbove.preload = 'auto';
+            audioBelow.preload = 'auto';
+            audioError.preload = 'auto';
         }
+        initAudio();
 
         function log(message, level = 'log') {
             if (DEBUG) {
@@ -665,43 +562,32 @@
             }
         }
 
-        function playBeep(frequency, duration, type, soundType) {
-            try {
-                if (!audioInitialized || !audioContext) {
-                    log(`[Audio] AudioContext не инициализирован для ${soundType}.`, 'warn');
-                    if (audioContext && audioContext.state === 'suspended') audioContext.resume();
+        function playSound(soundType) {
+            const now = Date.now();
+            if (now - lastAlertTime[soundType] < debounceTime) return;
+            lastAlertTime[soundType] = now;
+            let audio;
+            switch (soundType) {
+                case 'above_upper':
+                    audio = audioAbove;
+                    break;
+                case 'below_lower':
+                    audio = audioBelow;
+                    break;
+                case 'all_error':
+                    audio = audioError;
+                    break;
+                default:
                     return;
-                }
-                if (audioContext.state === 'suspended') {
-                    audioContext.resume().then(() => {
-                        log("[Audio] AudioContext возобновлён.");
-                        playBeep(frequency, duration, type, soundType);
-                    }).catch(e => log("[Audio] Ошибка возобновления AudioContext: " + e.message, 'error'));
-                    return;
-                }
-                if (audioContext.state === 'closed') {
-                    log("[Audio] AudioContext закрыт, инициализируем заново.", 'warn');
-                    initAudioContext();
-                    if (audioInitialized) {
-                        playBeep(frequency, duration, type, soundType);
-                    }
-                    return;
-                }
-
-                const oscillator = audioContext.createOscillator();
-                const gainNode = audioContext.createGain();
-                oscillator.connect(gainNode);
-                gainNode.connect(audioContext.destination);
-                oscillator.type = type;
-                oscillator.frequency.value = frequency;
-                gainNode.gain.setValueAtTime(0.5, audioContext.currentTime);
-                gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + duration);
-                oscillator.start();
-                oscillator.stop(audioContext.currentTime + duration);
-                log(`[Audio] Воспроизведён звук ${soundType}: ${frequency}Hz, ${duration}s, ${type}`);
-            } catch (e) {
-                log(`[Audio] Ошибка воспроизведения звука ${soundType}: ${e.message}`, 'error');
-                if (confirm(`Ошибка воспроизведения звука. ${soundType}! Подтвердите вручную.`)) {}
+            }
+            if (audio) {
+                // Попытка воспроизведения
+                audio.currentTime = 0; // Сброс к началу
+                audio.play().catch(e => log(`[Audio] Ошибка воспроизведения ${soundType}: ${e.message}`, 'error'));
+                stats.alerts[soundType]++;
+                stats.lastTriggerTime[soundType] = now;
+                updateStatsDisplay();
+                log(`[Audio] Воспроизведён звук ${soundType}`);
             }
         }
 
@@ -715,7 +601,6 @@
             Coinbase: { url: 'https://api.exchange.coinbase.com/products/BTC-USD/ticker', parse: (d) => d.price ? parseFloat(d.price) : null }
         };
         const ALL_EXCHANGES = Object.keys(API_CONFIGS);
-
         // --- СОСТОЯНИЯ ПРИЛОЖЕНИЯ ---
         let upperThreshold = 111000;
         let lowerThreshold = 110000;
@@ -725,56 +610,31 @@
         let activeExchanges = ['Binance', 'Bybit', 'OKX'];
         let trackingInterval = null;
         let isTrackingActive = false;
-
-        let soundSettings = {
-            above_upper: { frequency: 1200, duration: 0.15, type: 'sine' },
-            below_lower: { frequency: 400, duration: 0.15, type: 'sine' },
-            all_error: { frequency: 400, duration: 0.3, type: 'square' }
-        };
-
         const prices = {};
         const errors = {};
         let lastAlertTime = { above_upper: 0, below_lower: 0, all_error: 0 };
         let currentStatus = 'stopped';
-
         let stats = {
             alerts: { above_upper: 0, below_lower: 0, all_error: 0 },
             lastTriggerTime: { above_upper: 0, below_lower: 0, all_error: 0 }
         };
         let priceHistory = [];
         let previousPrices = {};
-
         // --- ЭЛЕМЕНТЫ DOM ---
         const startBtn = document.getElementById('startBtn');
         const saveSettingsBtn = document.getElementById('saveSettingsBtn');
         const loadingIndicator = document.getElementById('loadingIndicator');
         const upperInput = document.getElementById('upperThreshold');
         const lowerInput = document.getElementById('lowerThreshold');
-        const refreshIntervalInput = document.getElementById('refreshInterval');
-        const fetchTimeoutInput = document.getElementById('fetchTimeout');
-        const debounceTimeInput = document.getElementById('debounceTime');
         const currentStatusDisplay = document.getElementById('currentStatusDisplay');
         const upperErrorDiv = document.getElementById('upperThresholdError');
         const lowerErrorDiv = document.getElementById('lowerThresholdError');
-        const freqAboveInput = document.getElementById('freqAbove');
-        const durAboveInput = document.getElementById('durAbove');
-        const typeAboveSelect = document.getElementById('typeAbove');
-        const testAboveBtn = document.getElementById('testAboveBtn');
-        const freqBelowInput = document.getElementById('freqBelow');
-        const durBelowInput = document.getElementById('durBelow');
-        const typeBelowSelect = document.getElementById('typeBelow');
-        const testBelowBtn = document.getElementById('testBelowBtn');
-        const freqErrorInput = document.getElementById('freqError');
-        const durErrorInput = document.getElementById('durError');
-        const typeErrorSelect = document.getElementById('typeError');
-        const testErrorBtn = document.getElementById('testErrorBtn');
         const exchangesStatusDiv = document.getElementById('exchangesStatus');
         const notificationsDiv = document.getElementById('notifications');
-        const exchangeListDiv = document.getElementById('exchangeList');
-        const newExchangeSelect = document.getElementById('newExchangeSelect');
-        const addExchangeBtn = document.getElementById('addExchangeBtn');
+        const activeExchangesListDiv = document.getElementById('activeExchangesList');
+        const availableExchangesListDiv = document.getElementById('availableExchangesList');
         const activityIndicator = document.getElementById('activityIndicator');
-        const toggleThemeBtn = document.getElementById('toggleThemeBtn'); // Новая кнопка
+        const toggleThemeBtn = document.getElementById('toggleThemeBtn');
         const exportSettingsBtn = document.getElementById('exportSettingsBtn');
         const importSettingsBtn = document.getElementById('importSettingsBtn');
         const importSettingsInput = document.getElementById('importSettingsInput');
@@ -783,39 +643,20 @@
         const priceChartCanvas = document.getElementById('priceChartCanvas');
         const clearChartBtn = document.getElementById('clearChartBtn');
         const chartCtx = priceChartCanvas.getContext('2d');
-
-        // --- НОВЫЕ ЭЛЕМЕНТЫ ДЛЯ ЦВЕТОВ ---
-        const bgColorInput = document.getElementById('bgColorInput');
-        const controlsBgInput = document.getElementById('controlsBgInput');
-        const textColorInput = document.getElementById('textColorInput');
-        const alertBgInput = document.getElementById('alertBgInput');
-        const errorAlertBgInput = document.getElementById('errorAlertBgInput');
-        const networkErrorAlertBgInput = document.getElementById('networkErrorAlertBgInput');
-        const notificationTextColorInput = document.getElementById('notificationTextColorInput');
-        const appBgStableInput = document.getElementById('appBgStableInput');
-        const appBgDisconnectedInput = document.getElementById('appBgDisconnectedInput');
-        const appBgAboveInput = document.getElementById('appBgAboveInput');
-        const appBgBelowInput = document.getElementById('appBgBelowInput');
-        const appBgStoppedInput = document.getElementById('appBgStoppedInput');
-        const chartLineColorInput = document.getElementById('chartLineColorInput');
-        const resetColorsBtn = document.getElementById('resetColorsBtn');
-
-        ALL_EXCHANGES.forEach(ex => { const o = document.createElement('option'); o.value = ex; o.textContent = ex; newExchangeSelect.appendChild(o); });
-
-        // --- ЛОГИКА ВОСПРОИЗВЕДЕНИЯ ЗВУКА ---
-        function playSound(soundType) {
-            const now = Date.now();
-            if (now - lastAlertTime[soundType] < debounceTime) return;
-            lastAlertTime[soundType] = now;
-            const s = soundSettings[soundType];
-            if (s) {
-                playBeep(s.frequency, s.duration, s.type, soundType);
-                stats.alerts[soundType]++;
-                stats.lastTriggerTime[soundType] = now;
-                updateStatsDisplay();
-                log(`[Sound] Воспроизведён звук ${soundType}`);
-            }
-        }
+        // --- НОВЫЕ ЭЛЕМЕНТЫ ДЛЯ СЛАЙДЕРОВ ---
+        const refreshIntervalSlider = document.getElementById('refreshIntervalSlider');
+        const fetchTimeoutSlider = document.getElementById('fetchTimeoutSlider');
+        const debounceTimeSlider = document.getElementById('debounceTimeSlider');
+        const refreshIntervalValue = document.getElementById('refreshIntervalValue');
+        const fetchTimeoutValue = document.getElementById('fetchTimeoutValue');
+        const debounceTimeValue = document.getElementById('debounceTimeValue');
+        // --- НОВЫЕ ЭЛЕМЕНТЫ ДЛЯ АУДИО ---
+        const audioAboveFile = document.getElementById('audioAboveFile');
+        const audioBelowFile = document.getElementById('audioBelowFile');
+        const audioErrorFile = document.getElementById('audioErrorFile');
+        const testAboveBtn = document.getElementById('testAboveBtn');
+        const testBelowBtn = document.getElementById('testBelowBtn');
+        const testErrorBtn = document.getElementById('testErrorBtn');
 
         // --- ЛОГИКА УВЕДОМЛЕНИЙ ---
         function showNotification(message, isError = false, isNetworkError = false) {
@@ -826,7 +667,6 @@
             setTimeout(() => n.remove(), 3000);
             log(`[Notification] Показано: ${message}`);
         }
-
         // --- ЛОГИКА ОТОБРАЖЕНИЯ СТАТУСОВ ---
         function updateCurrentStatusDisplay(status) {
             currentStatusDisplay.textContent = `Статус: ${status.charAt(0).toUpperCase() + status.slice(1)}`;
@@ -836,7 +676,6 @@
             else if (status === 'above_upper') currentStatusDisplay.classList.add('status-above');
             else if (status === 'below_lower') currentStatusDisplay.classList.add('status-below');
             else if (status === 'stopped') currentStatusDisplay.classList.add('status-stopped');
-
             // --- УСТАНОВКА ЦВЕТА ФОНА BODY НАПРЯМУЮ ---
             const root = document.documentElement;
             let bgColorVar;
@@ -845,14 +684,12 @@
             else if (status === 'above_upper') bgColorVar = '--app-bg-above';
             else if (status === 'below_lower') bgColorVar = '--app-bg-below';
             else if (status === 'stopped') bgColorVar = '--app-bg-stopped';
-
             if (bgColorVar) {
                 const bgColor = getComputedStyle(root).getPropertyValue(bgColorVar).trim();
                 document.body.style.backgroundColor = bgColor;
                 log(`[UI] Цвет фона body установлен на ${bgColor} для статуса ${status}`);
             }
         }
-
         function updateExchangeDisplay(exchangeName, price, isError, isNetworkError = false) {
             let div = document.querySelector(`.exchange[data-exchange="${exchangeName}"]`);
             if (!div) {
@@ -861,22 +698,18 @@
                 div.dataset.exchange = exchangeName;
                 exchangesStatusDiv.appendChild(div);
             }
-
             // Сохраняем классы price-up/price-down, если они есть
             const hadPriceUp = div.classList.contains('price-up');
             const hadPriceDown = div.classList.contains('price-down');
-
             // Сначала убираем все цветовые классы, кроме price-up/price-down
             div.classList.remove('ok', 'error', 'network-error', 'price-up', 'price-down');
-
             if (isError) {
                 div.className = `exchange ${isNetworkError ? 'network-error' : 'error'}`;
                 div.innerHTML = `<strong>${exchangeName}:</strong> ${isNetworkError ? 'Сетевая ошибка' : 'Ошибка'}`;
             } else {
                 // Обновляем цену и добавляем класс 'ok'
                 div.className = 'exchange ok';
-                div.innerHTML = `<strong>${exchangeName}:</strong> <span class="price">$${price.toFixed(2)}</span>`;
-
+                div.innerHTML = `<strong>${exchangeName}:</strong> Цена: <span class="price">$${price.toFixed(2)}</span>`;
                 // Проверяем изменение цены и добавляем/удаляем классы price-up/price-down
                 const prevPrice = previousPrices[exchangeName];
                 if (prevPrice !== undefined && price !== null) {
@@ -891,7 +724,6 @@
                 previousPrices[exchangeName] = price;
             }
         }
-
         // --- ЛОГИКА СОХРАНЕНИЯ/ЗАГРУЗКИ НАСТРОЕК ---
         function loadSettings() {
             try {
@@ -907,34 +739,29 @@
                         activeExchanges = s.activeExchanges.filter(e => ALL_EXCHANGES.includes(e));
                         if (activeExchanges.length === 0) activeExchanges = [ALL_EXCHANGES[0]];
                     }
-                    if (s.soundSettings && typeof s.soundSettings === 'object') {
-                        for (let k in soundSettings) if (s.soundSettings[k]) soundSettings[k] = { ...soundSettings[k], ...s.soundSettings[k] };
-                    }
                     if (s.isTrackingActive !== undefined) isTrackingActive = s.isTrackingActive;
                     upperInput.value = upperThreshold; lowerInput.value = lowerThreshold;
-                    refreshIntervalInput.value = refreshInterval / 1000;
-                    fetchTimeoutInput.value = fetchTimeout / 1000;
-                    debounceTimeInput.value = debounceTime / 1000;
-                    freqAboveInput.value = soundSettings.above_upper.frequency; durAboveInput.value = soundSettings.above_upper.duration; typeAboveSelect.value = soundSettings.above_upper.type;
-                    freqBelowInput.value = soundSettings.below_lower.frequency; durBelowInput.value = soundSettings.below_lower.duration; typeBelowSelect.value = soundSettings.below_lower.type;
-                    freqErrorInput.value = soundSettings.all_error.frequency; durErrorInput.value = soundSettings.all_error.duration; typeErrorSelect.value = soundSettings.all_error.type;
+                    refreshIntervalSlider.value = refreshInterval / 1000;
+                    fetchTimeoutSlider.value = fetchTimeout / 1000;
+                    debounceTimeSlider.value = debounceTime / 1000;
+                    refreshIntervalValue.textContent = refreshInterval / 1000;
+                    fetchTimeoutValue.textContent = fetchTimeout / 1000;
+                    debounceTimeValue.textContent = debounceTime / 1000;
                     log("[Settings] Настройки загружены из localStorage.");
                 }
             } catch (e) {
                 log("[Settings] Ошибка загрузки настроек из localStorage: " + e.message, 'error');
             }
         }
-
         function saveSettings() {
             try {
                 const s = {
                     upperThreshold: parseFloat(upperInput.value) || upperThreshold,
                     lowerThreshold: parseFloat(lowerInput.value) || lowerThreshold,
-                    refreshInterval: parseInt(refreshIntervalInput.value) || (refreshInterval / 1000),
-                    fetchTimeout: parseInt(fetchTimeoutInput.value) || (fetchTimeout / 1000),
-                    debounceTime: parseInt(debounceTimeInput.value) || (debounceTime / 1000),
+                    refreshInterval: parseInt(refreshIntervalSlider.value) || (refreshInterval / 1000),
+                    fetchTimeout: parseInt(fetchTimeoutSlider.value) || (fetchTimeout / 1000),
+                    debounceTime: parseInt(debounceTimeSlider.value) || (debounceTime / 1000),
                     activeExchanges: [...activeExchanges],
-                    soundSettings: { ...soundSettings },
                     isTrackingActive: isTrackingActive
                 };
                 localStorage.setItem('btcTrackerSettings', JSON.stringify(s));
@@ -946,37 +773,28 @@
                     clearInterval(trackingInterval);
                     trackingInterval = setInterval(fetchPrices, refreshInterval);
                 }
-                // --- СОХРАНЯЕМ ЦВЕТА ПРИ СОХРАНЕНИИ НАСТРОЕК ---
-                saveCustomColors();
-                log("[Settings] Настройки и цвета сохранены в localStorage.");
+                log("[Settings] Настройки сохранены в localStorage.");
             } catch (e) {
                 log("[Settings] Ошибка сохранения настроек в localStorage: " + e.message, 'error');
             }
         }
-
         // --- ЛОГИКА ТЕМЫ ---
         function loadTheme() {
             const savedTheme = localStorage.getItem('appTheme') || 'light';
             if (savedTheme === 'dark') {
                 document.body.classList.add('dark-theme');
             }
-            // После загрузки темы загружаем цвета
-            loadCustomColors();
             updateChartColor();
-            log("[Theme] Тема и цвета загружены: " + savedTheme);
+            log("[Theme] Тема загружена: " + savedTheme);
         }
-
         function saveTheme(isDark) {
             localStorage.setItem('appTheme', isDark ? 'dark' : 'light');
             log("[Theme] Тема сохранена: " + (isDark ? 'dark' : 'light'));
         }
-
         function toggleTheme() {
             document.body.classList.toggle('dark-theme');
             const isDark = document.body.classList.contains('dark-theme');
             saveTheme(isDark);
-            // После переключения темы перезагружаем цвета (они могут быть разные для тем)
-            loadCustomColors();
             updateChartColor();
             // Обновляем отображение статуса, чтобы фон body тоже обновился
             if (currentStatus !== 'stopped') {
@@ -988,25 +806,21 @@
             }
             log("[Theme] Тема переключена.");
         }
-
         // --- ЛОГИКА ЭКСПОРТА/ИМПОРТА ---
         function exportSettings() {
             const settings = {
                 appSettings: {
                     upperThreshold: parseFloat(upperInput.value) || upperThreshold,
                     lowerThreshold: parseFloat(lowerInput.value) || lowerThreshold,
-                    refreshInterval: parseInt(refreshIntervalInput.value) || (refreshInterval / 1000),
-                    fetchTimeout: parseInt(fetchTimeoutInput.value) || (fetchTimeout / 1000),
-                    debounceTime: parseInt(debounceTimeInput.value) || (debounceTime / 1000),
+                    refreshInterval: parseInt(refreshIntervalSlider.value) || (refreshInterval / 1000),
+                    fetchTimeout: parseInt(fetchTimeoutSlider.value) || (fetchTimeout / 1000),
+                    debounceTime: parseInt(debounceTimeSlider.value) || (debounceTime / 1000),
                     activeExchanges: [...activeExchanges],
-                    soundSettings: { ...soundSettings },
                     isTrackingActive: isTrackingActive
                 },
                 stats: stats,
-                priceHistory: priceHistory,
-                customColors: getCurrentColors() // Экспортируем текущие цвета
+                priceHistory: priceHistory
             };
-
             const dataStr = JSON.stringify(settings, null, 2);
             const dataBlob = new Blob([dataStr], { type: 'application/json' });
             const url = URL.createObjectURL(dataBlob);
@@ -1019,7 +833,6 @@
             URL.revokeObjectURL(url);
             log("[Export] Настройки экспортированы.");
         }
-
         function importSettings(file) {
             const reader = new FileReader();
             reader.onload = function(e) {
@@ -1029,28 +842,19 @@
                         const s = importedData.appSettings;
                         upperInput.value = s.upperThreshold;
                         lowerInput.value = s.lowerThreshold;
-                        refreshIntervalInput.value = s.refreshInterval;
-                        fetchTimeoutInput.value = s.fetchTimeout;
-                        debounceTimeInput.value = s.debounceTime;
-                        if (s.soundSettings && typeof s.soundSettings === 'object') {
-                            for (let k in soundSettings) if (s.soundSettings[k]) soundSettings[k] = { ...soundSettings[k], ...s.soundSettings[k] };
-                            freqAboveInput.value = soundSettings.above_upper.frequency;
-                            durAboveInput.value = soundSettings.above_upper.duration;
-                            typeAboveSelect.value = soundSettings.above_upper.type;
-                            freqBelowInput.value = soundSettings.below_lower.frequency;
-                            durBelowInput.value = soundSettings.below_lower.duration;
-                            typeBelowSelect.value = soundSettings.below_lower.type;
-                            freqErrorInput.value = soundSettings.all_error.frequency;
-                            durErrorInput.value = soundSettings.all_error.duration;
-                            typeErrorSelect.value = soundSettings.all_error.type;
-                        }
+                        refreshIntervalSlider.value = s.refreshInterval;
+                        fetchTimeoutSlider.value = s.fetchTimeout;
+                        debounceTimeSlider.value = s.debounceTime;
+                        refreshIntervalValue.textContent = s.refreshInterval;
+                        fetchTimeoutValue.textContent = s.fetchTimeout;
+                        debounceTimeValue.textContent = s.debounceTime;
                         if (Array.isArray(s.activeExchanges) && s.activeExchanges.length > 0) {
                             activeExchanges = s.activeExchanges.filter(e => ALL_EXCHANGES.includes(e));
                             if (activeExchanges.length === 0) activeExchanges = [ALL_EXCHANGES[0]];
                         }
                         isTrackingActive = s.isTrackingActive;
                         saveSettings();
-                        updateExchangeListUI();
+                        updateExchangeListsUI();
                         if (isTrackingActive) {
                             startBtn.textContent = 'Остановить отслеживание';
                             startBtn.classList.add('running');
@@ -1074,13 +878,6 @@
                         drawChart();
                         log("[Import] История цен импортирована.");
                     }
-                    // --- ИМПОРТ ЦВЕТОВ ---
-                    if (importedData.customColors) {
-                        applyCustomColors(importedData.customColors);
-                        // После применения цветов обновляем поля ввода
-                        loadCustomColors();
-                        log("[Import] Цвета импортированы и применены.");
-                    }
                     alert("Настройки успешно импортированы.");
                 } catch (e) {
                     log("[Import] Ошибка импорта: " + e.message, 'error');
@@ -1089,7 +886,6 @@
             };
             reader.readAsText(file);
         }
-
         // --- ЛОГИКА СТАТИСТИКИ ---
         function loadStats() {
             try {
@@ -1105,16 +901,6 @@
                 log("[Stats] Ошибка загрузки статистики: " + e.message, 'error');
             }
         }
-
-        function saveStats() {
-            try {
-                localStorage.setItem(STATS_KEY, JSON.stringify(stats));
-                log("[Stats] Статистика сохранена в localStorage.");
-            } catch (e) {
-                log("[Stats] Ошибка сохранения статистики: " + e.message, 'error');
-            }
-        }
-
         function updateStatsDisplay() {
             statsDisplay.innerHTML = `
                 <p>Срабатываний "Выше порога": ${stats.alerts.above_upper}</p>
@@ -1124,9 +910,7 @@
                 <p>Посл. "Ниже": ${stats.lastTriggerTime.below_lower ? new Date(stats.lastTriggerTime.below_lower).toLocaleString() : 'Нет'}</p>
                 <p>Посл. "Ошибка": ${stats.lastTriggerTime.all_error ? new Date(stats.lastTriggerTime.all_error).toLocaleString() : 'Нет'}</p>
             `;
-            // --- УБРАНО: saveStats() из updateStatsDisplay ---
         }
-
         function resetStats() {
             stats = {
                 alerts: { above_upper: 0, below_lower: 0, all_error: 0 },
@@ -1135,49 +919,39 @@
             updateStatsDisplay();
             log("[Stats] Статистика сброшена.");
         }
-
         // --- ЛОГИКА ГРАФИКА ---
         function updatePriceHistory(avgPrice) {
             if (avgPrice && !isNaN(avgPrice)) {
                 const now = Date.now();
                 priceHistory.push({ timestamp: now, avgPrice: avgPrice });
-
                 if (priceHistory.length > MAX_CHART_POINTS) {
                     priceHistory = priceHistory.slice(-MAX_CHART_POINTS);
                 }
                 drawChart();
             }
         }
-
         function drawChart() {
             if (!priceHistory.length) return;
-
             const canvas = priceChartCanvas;
             const ctx = chartCtx;
             const width = canvas.clientWidth;
             const height = canvas.clientHeight;
-
             const dpr = window.devicePixelRatio || 1;
             canvas.width = width * dpr;
             canvas.height = height * dpr;
             ctx.scale(dpr, dpr);
-
             ctx.clearRect(0, 0, width, height);
-
             const prices = priceHistory.map(p => p.avgPrice);
             const minPrice = Math.min(...prices);
             const maxPrice = Math.max(...prices);
             const timeMin = priceHistory[0].timestamp;
             const timeMax = priceHistory[priceHistory.length - 1].timestamp;
-
             const priceRange = maxPrice - minPrice || 1;
             const timeRange = timeMax - timeMin || 1;
-
             ctx.beginPath();
             // --- ЦВЕТ ЛИНИИ ГРАФИКА ЧЕРЕЗ CSS-ПЕРЕМЕННУЮ ---
             ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--chart-line-color').trim();
             ctx.lineWidth = 2;
-
             for (let i = 0; i < priceHistory.length; i++) {
                 const p = priceHistory[i];
                 const x = ((p.timestamp - timeMin) / timeRange) * width;
@@ -1190,205 +964,145 @@
             }
             ctx.stroke();
         }
-
         function updateChartColor() {
              if (priceHistory.length > 0) {
                  drawChart(); // Перерисовываем график с новым цветом
                  log("[Chart] Цвет графика обновлён.");
              }
         }
-
         function clearChart() {
             priceHistory = [];
             drawChart();
             log("[Chart] График очищен.");
         }
-
         // --- ЛОГИКА УПРАВЛЕНИЯ СПИСКОМ БИРЖ ---
-        function updateExchangeListUI() {
-            exchangeListDiv.innerHTML = '';
-            activeExchanges.forEach(ex => {
-                const item = document.createElement('div');
-                item.className = 'exchange-item';
-                item.innerHTML = `<span>${ex}</span><button class="remove-btn" data-exchange="${ex}">-</button>`;
-                exchangeListDiv.appendChild(item);
+        function updateExchangeListsUI() {
+            activeExchangesListDiv.innerHTML = '<h3>Активные биржи</h3>';
+            availableExchangesListDiv.innerHTML = '<h3>Доступные биржи</h3>';
+
+            ALL_EXCHANGES.forEach(ex => {
+                if (activeExchanges.includes(ex)) {
+                    const item = document.createElement('div');
+                    item.className = 'exchange-item';
+                    item.innerHTML = `<span>${ex}</span><button class="remove-btn" data-exchange="${ex}">-</button>`;
+                    activeExchangesListDiv.appendChild(item);
+                } else {
+                    const item = document.createElement('div');
+                    item.className = 'exchange-item';
+                    item.innerHTML = `<span>${ex}</span><button class="add-btn" data-exchange="${ex}">+</button>`;
+                    availableExchangesListDiv.appendChild(item);
+                }
             });
+
             document.querySelectorAll('.remove-btn').forEach(btn => btn.addEventListener('click', () => {
                 const ex = btn.getAttribute('data-exchange');
                 activeExchanges = activeExchanges.filter(e => e !== ex);
-                updateExchangeListUI();
+                updateExchangeListsUI();
                 delete prices[ex]; delete errors[ex]; delete previousPrices[ex];
                 saveSettings();
             }));
-        }
 
-        // --- ЛОГИКА ЦВЕТОВ ---
-
-        // --- Функция для получения текущих значений цветов из полей ввода ---
-        function getCurrentColors() {
-            return {
-                bgColor: bgColorInput.value,
-                controlsBg: controlsBgInput.value,
-                textColor: textColorInput.value,
-                alertBg: alertBgInput.value,
-                errorAlertBg: errorAlertBgInput.value,
-                networkErrorAlertBg: networkErrorAlertBgInput.value,
-                notificationTextColor: notificationTextColorInput.value,
-                appBgStable: appBgStableInput.value,
-                appBgDisconnected: appBgDisconnectedInput.value,
-                appBgAbove: appBgAboveInput.value,
-                appBgBelow: appBgBelowInput.value,
-                appBgStopped: appBgStoppedInput.value,
-                chartLineColor: chartLineColorInput.value
-            };
-        }
-
-        // --- Функция для применения цветов к CSS-переменным ---
-        function applyCustomColors(colors) {
-            const root = document.documentElement;
-            for (const [key, value] of Object.entries(colors)) {
-                // Преобразуем camelCase в kebab-case для CSS переменной
-                const cssVarName = key.replace(/([A-Z])/g, '-$1').toLowerCase();
-                root.style.setProperty(`--${cssVarName}`, value);
-                log(`[Colors] Применён цвет --${cssVarName}: ${value}`);
-            }
-            // Обновляем цвет графика
-            updateChartColor();
-            // Обновляем цвет фона body, если статус не 'stopped'
-            if (currentStatus !== 'stopped') {
-                updateCurrentStatusDisplay(currentStatus); // Это обновит фон body
-            } else {
-                // Если статус 'stopped', устанавливаем фон напрямую
-                document.body.style.backgroundColor = getComputedStyle(root).getPropertyValue('--app-bg-stopped').trim();
-            }
-            log("[Colors] Все пользовательские цвета применены.");
-        }
-
-        // --- Функция для получения цветов по умолчанию для текущей темы ---
-        function getDefaultColorsForCurrentTheme() {
-            const isDark = document.body.classList.contains('dark-theme');
-            const prefix = isDark ? 'default-dark' : 'default-light';
-            return {
-                bgColor: getComputedStyle(document.documentElement).getPropertyValue(`--bg-color-${prefix}`).trim(),
-                controlsBg: getComputedStyle(document.documentElement).getPropertyValue(`--controls-bg-${prefix}`).trim(),
-                textColor: getComputedStyle(document.documentElement).getPropertyValue(`--text-color-${prefix}`).trim(),
-                alertBg: getComputedStyle(document.documentElement).getPropertyValue(`--alert-bg-${prefix}`).trim(),
-                errorAlertBg: getComputedStyle(document.documentElement).getPropertyValue(`--error-alert-bg-${prefix}`).trim(),
-                networkErrorAlertBg: getComputedStyle(document.documentElement).getPropertyValue(`--network-error-alert-bg-${prefix}`).trim(),
-                notificationTextColor: getComputedStyle(document.documentElement).getPropertyValue(`--notification-text-color-${prefix}`).trim(),
-                appBgStable: getComputedStyle(document.documentElement).getPropertyValue(`--app-bg-stable-${prefix}`).trim(),
-                appBgDisconnected: getComputedStyle(document.documentElement).getPropertyValue(`--app-bg-disconnected-${prefix}`).trim(),
-                appBgAbove: getComputedStyle(document.documentElement).getPropertyValue(`--app-bg-above-${prefix}`).trim(),
-                appBgBelow: getComputedStyle(document.documentElement).getPropertyValue(`--app-bg-below-${prefix}`).trim(),
-                appBgStopped: getComputedStyle(document.documentElement).getPropertyValue(`--app-bg-stopped-${prefix}`).trim(),
-                chartLineColor: getComputedStyle(document.documentElement).getPropertyValue(`--chart-line-color-${prefix}`).trim()
-            };
-        }
-
-        // --- Функция для загрузки пользовательских цветов из localStorage ---
-        function loadCustomColors() {
-             try {
-                 const savedColorsString = localStorage.getItem(CUSTOM_COLORS_KEY);
-                 let colorsToApply = getDefaultColorsForCurrentTheme(); // По умолчанию для текущей темы
-
-                 if (savedColorsString) {
-                     const allSavedColors = JSON.parse(savedColorsString);
-                     // Определяем текущую тему
-                     const themeKey = document.body.classList.contains('dark-theme') ? 'dark' : 'light';
-                     // Проверяем, есть ли сохранённые цвета для текущей темы
-                     if (allSavedColors[themeKey]) {
-                         colorsToApply = allSavedColors[themeKey];
-                         log(`[Colors] Загружены пользовательские цвета для темы ${themeKey} из localStorage.`);
-                     } else {
-                         log(`[Colors] Пользовательские цвета для текущей темы (${themeKey}) не найдены в localStorage. Используются цвета по умолчанию для темы.`);
-                     }
-                 } else {
-                      log(`[Colors] Пользовательские цвета не найдены в localStorage. Используются цвета по умолчанию для темы.`);
-                 }
-
-                 // --- Заполняем поля ввода цветов ---
-                 bgColorInput.value = colorsToApply.bgColor;
-                 controlsBgInput.value = colorsToApply.controlsBg;
-                 textColorInput.value = colorsToApply.textColor;
-                 alertBgInput.value = colorsToApply.alertBg;
-                 errorAlertBgInput.value = colorsToApply.errorAlertBg;
-                 networkErrorAlertBgInput.value = colorsToApply.networkErrorAlertBg;
-                 notificationTextColorInput.value = colorsToApply.notificationTextColor;
-                 appBgStableInput.value = colorsToApply.appBgStable;
-                 appBgDisconnectedInput.value = colorsToApply.appBgDisconnected;
-                 appBgAboveInput.value = colorsToApply.appBgAbove;
-                 appBgBelowInput.value = colorsToApply.appBgBelow;
-                 appBgStoppedInput.value = colorsToApply.appBgStopped;
-                 chartLineColorInput.value = colorsToApply.chartLineColor;
-
-                 // --- Применяем загруженные или дефолтные цвета ---
-                 applyCustomColors(colorsToApply);
-
-             } catch (e) {
-                 log("[Colors] Ошибка загрузки пользовательских цветов из localStorage: " + e.message, 'error');
-                 // В случае ошибки применяем дефолтные цвета для текущей темы
-                 const defaultColors = getDefaultColorsForCurrentTheme();
-                 applyCustomColors(defaultColors);
-                 loadCustomColors(); // Повторно заполняем поля дефолтными значениями
-             }
-        }
-
-        // --- Функция для сохранения пользовательских цветов в localStorage ---
-        function saveCustomColors() {
-            try {
-                // Получаем текущие цвета из полей ввода
-                const currentColors = getCurrentColors();
-
-                // Получаем уже сохранённые цвета или создаём пустой объект
-                let allSavedColors = {};
-                const savedColorsString = localStorage.getItem(CUSTOM_COLORS_KEY);
-                if (savedColorsString) {
-                    allSavedColors = JSON.parse(savedColorsString);
+            document.querySelectorAll('.add-btn').forEach(btn => btn.addEventListener('click', () => {
+                const ex = btn.getAttribute('data-exchange');
+                if (!activeExchanges.includes(ex)) {
+                    activeExchanges.push(ex);
+                    updateExchangeListsUI();
+                    saveSettings();
+                    updateExchangeDisplay(ex, null, true, true); // Обновляем дисплей для новой биржи
                 }
-
-                // Определяем текущую тему
-                const themeKey = document.body.classList.contains('dark-theme') ? 'dark' : 'light';
-
-                // Сохраняем цвета для текущей темы
-                allSavedColors[themeKey] = currentColors;
-
-                // Записываем обратно в localStorage
-                localStorage.setItem(CUSTOM_COLORS_KEY, JSON.stringify(allSavedColors));
-
-                log(`[Colors] Пользовательские цвета для темы ${themeKey} сохранены в localStorage.`);
-            } catch (e) {
-                log("[Colors] Ошибка сохранения пользовательских цветов в localStorage: " + e.message, 'error');
-            }
+            }));
         }
+        // --- ОБРАБОТЧИКИ СЛАЙДЕРОВ ---
+        refreshIntervalSlider.addEventListener('input', () => {
+            refreshIntervalValue.textContent = refreshIntervalSlider.value;
+            // Применяем на лету
+            const newInterval = parseInt(refreshIntervalSlider.value) * 1000;
+            if (newInterval !== refreshInterval) {
+                refreshInterval = newInterval;
+                if (trackingInterval) {
+                    clearInterval(trackingInterval);
+                    trackingInterval = setInterval(fetchPrices, refreshInterval);
+                }
+                log("[Settings] Интервал обновления изменён на лету: " + refreshInterval);
+            }
+        });
 
-        // --- Функция для сброса цветов к дефолтным для текущей темы ---
-        function resetColors() {
-             const defaultColors = getDefaultColorsForCurrentTheme();
-             applyCustomColors(defaultColors);
-             // Обновляем поля ввода после применения дефолтных цветов
-             loadCustomColors();
-             // Сохраняем сброшенные цвета
-             saveCustomColors();
-             log("[Colors] Цвета сброшены к значениям по умолчанию для текущей темы и сохранены.");
+        fetchTimeoutSlider.addEventListener('input', () => {
+            fetchTimeoutValue.textContent = fetchTimeoutSlider.value;
+            fetchTimeout = parseInt(fetchTimeoutSlider.value) * 1000;
+            log("[Settings] Таймаут запроса изменён на лету: " + fetchTimeout);
+        });
+
+        debounceTimeSlider.addEventListener('input', () => {
+            debounceTimeValue.textContent = debounceTimeSlider.value;
+            debounceTime = parseInt(debounceTimeSlider.value) * 1000;
+            log("[Settings] Интервал повтора изменён на лету: " + debounceTime);
+        });
+
+        // --- ОБРАБОТЧИКИ АУДИО ---
+        audioAboveFile.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                const file = e.target.files[0];
+                const url = URL.createObjectURL(file);
+                audioAbove.src = url;
+                log("[Audio] Загружен файл для 'Выше порога': " + file.name);
+            }
+        });
+
+        audioBelowFile.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                const file = e.target.files[0];
+                const url = URL.createObjectURL(file);
+                audioBelow.src = url;
+                log("[Audio] Загружен файл для 'Ниже порога': " + file.name);
+            }
+        });
+
+        audioErrorFile.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                const file = e.target.files[0];
+                const url = URL.createObjectURL(file);
+                audioError.src = url;
+                log("[Audio] Загружен файл для 'Ошибка': " + file.name);
+            }
+        });
+
+        testAboveBtn.addEventListener('click', () => {
+            audioAbove.currentTime = 0;
+            audioAbove.play().catch(e => log("[Audio] Ошибка теста 'Выше': " + e.message, 'error'));
+        });
+
+        testBelowBtn.addEventListener('click', () => {
+            audioBelow.currentTime = 0;
+            audioBelow.play().catch(e => log("[Audio] Ошибка теста 'Ниже': " + e.message, 'error'));
+        });
+
+        testErrorBtn.addEventListener('click', () => {
+            audioError.currentTime = 0;
+            audioError.play().catch(e => log("[Audio] Ошибка теста 'Ошибка': " + e.message, 'error'));
+        });
+
+        // --- ВАЛИДАЦИЯ ---
+        function validateThresholds() {
+            const u = parseFloat(upperInput.value); const l = parseFloat(lowerInput.value);
+            [upperInput, lowerInput].forEach(i => i.classList.remove('error-validation'));
+            [upperErrorDiv, lowerErrorDiv].forEach(d => d.style.display = 'none');
+            let v = true;
+            if (isNaN(u) || isNaN(l)) v = false;
+            else if (u < l) { upperInput.classList.add('error-validation'); upperErrorDiv.style.display = 'block'; v = false; }
+            else if (l > u) { lowerInput.classList.add('error-validation'); lowerErrorDiv.style.display = 'block'; v = false; }
+            return v;
         }
 
         // --- ОСНОВНАЯ ЛОГИКА ПОЛУЧЕНИЯ ЦЕН ---
         async function fetchPrices() {
             if (!isTrackingActive) return;
-
             try {
                 log("[fetchPrices] Цикл запущен. Текущий статус:", currentStatus);
                 activityIndicator.classList.add('active');
-
-                if (!audioInitialized) {
-                    log("[fetchPrices] AudioContext не инициализирован.", 'warn');
-                    return;
-                }
-
                 const promises = activeExchanges.map(async (exName) => {
                     const config = API_CONFIGS[exName];
                     if (!config) return { exchange: exName, price: null, error: true, isNetworkError: false };
-
                     let timeoutId;
                     try {
                         const controller = new AbortController();
@@ -1406,19 +1120,15 @@
                         return { exchange: exName, price: null, error: true, isNetworkError: true };
                     }
                 });
-
                 const results = await Promise.all(promises);
-
                 results.forEach(r => {
                     if (r.error) { errors[r.exchange] = { error: true, isNetworkError: r.isNetworkError }; prices[r.exchange] = null; }
                     else { errors[r.exchange] = { error: false, isNetworkError: false }; prices[r.exchange] = r.price; }
                     updateExchangeDisplay(r.exchange, r.price, r.error, r.isNetworkError);
                 });
-
                 let newStatus = 'stable';
                 let anyAbove = false; let anyBelow = false; let allErr = activeExchanges.length > 0;
                 let totalValidPrice = 0; let validCount = 0;
-
                 for (const ex of activeExchanges) {
                     const exErr = errors[ex];
                     if (!exErr.error) {
@@ -1431,102 +1141,40 @@
                         }
                     }
                 }
-
                 if (allErr) newStatus = 'disconnected';
                 else if (anyAbove) newStatus = 'above_upper';
                 else if (anyBelow) newStatus = 'below_lower';
-
                 currentStatus = newStatus;
                 updateCurrentStatusDisplay(currentStatus);
-
                 if (validCount > 0) {
                     const avgPrice = totalValidPrice / validCount;
                     updatePriceHistory(avgPrice);
                 }
-
                 const now = Date.now();
                 if (currentStatus === 'above_upper' && (now - lastAlertTime.above_upper >= debounceTime)) {
                     playSound('above_upper');
-                    showNotification('Цена BTC повысилась!!', false);
+                    showNotification('Цена BTC превысила верхний порог!', false);
                 } else if (currentStatus === 'below_lower' && (now - lastAlertTime.below_lower >= debounceTime)) {
                     playSound('below_lower');
-                    showNotification('Цена BTC понизилась!', true);
+                    showNotification('Цена BTC опустилась ниже нижнего порога!', true);
                 } else if (currentStatus === 'disconnected' && (now - lastAlertTime.all_error >= debounceTime)) {
                     playSound('all_error');
                     showNotification('Все биржи вернули ошибку!', true, true);
                 }
-
             } catch (e) {
                 log("[fetchPrices] Неожиданная ошибка в цикле: " + e.message, 'error');
             } finally {
                 activityIndicator.classList.remove('active');
             }
         }
-
-        // --- ВАЛИДАЦИЯ ---
-        function validateThresholds() {
-            const u = parseFloat(upperInput.value); const l = parseFloat(lowerInput.value);
-            [upperInput, lowerInput].forEach(i => i.classList.remove('error-validation'));
-            [upperErrorDiv, lowerErrorDiv].forEach(d => d.style.display = 'none');
-            let v = true;
-            if (isNaN(u) || isNaN(l)) v = false;
-            else if (u < l) { upperInput.classList.add('error-validation'); upperErrorDiv.style.display = 'block'; v = false; }
-            else if (l > u) { lowerInput.classList.add('error-validation'); lowerErrorDiv.style.display = 'block'; v = false; }
-            return v;
-        }
-
-        function validateSoundSettings() {
-            let v = true;
-            const s = [
-                { i: freqAboveInput, min: 20, max: 2000, n: 'freqAbove' },
-                { i: durAboveInput, min: 0.01, max: 1, n: 'durAbove' },
-                { i: freqBelowInput, min: 20, max: 2000, n: 'freqBelow' },
-                { i: durBelowInput, min: 0.01, max: 1, n: 'durBelow' },
-                { i: freqErrorInput, min: 20, max: 2000, n: 'freqError' },
-                { i: durErrorInput, min: 0.01, max: 2, n: 'durError' }
-            ];
-            s.forEach(setting => {
-                const val = parseFloat(setting.i.value);
-                setting.i.classList.remove('error-validation');
-                if (isNaN(val) || val < setting.min || val > setting.max) {
-                    setting.i.classList.add('error-validation');
-                    v = false;
-                    log(`[Validation] Ошибка валидации ${setting.n}: ${val}`, 'warn');
-                }
-            });
-            return v;
-        }
-
-        function validateDebounceTime() {
-            const val = parseInt(debounceTimeInput.value);
-            debounceTimeInput.classList.remove('error-validation');
-            if (isNaN(val) || val < 1 || val > 60) { debounceTimeInput.classList.add('error-validation'); return false; }
-            return true;
-        }
-
-        function validateFetchTimeout() {
-            const val = parseInt(fetchTimeoutInput.value);
-            fetchTimeoutInput.classList.remove('error-validation');
-            if (isNaN(val) || val < 1 || val > 30) { fetchTimeoutInput.classList.add('error-validation'); return false; }
-            return true;
-        }
-
         // --- ОБРАБОТЧИКИ СОБЫТИЙ ---
         [upperInput, lowerInput].forEach(i => i.addEventListener('input', validateThresholds));
         upperInput.addEventListener('change', () => { if (validateThresholds()) saveSettings(); else upperInput.value = upperThreshold; });
         lowerInput.addEventListener('change', () => { if (validateThresholds()) saveSettings(); else lowerInput.value = lowerThreshold; });
-        refreshIntervalInput.addEventListener('change', () => { const val = parseInt(refreshIntervalInput.value); if (val < 1) refreshIntervalInput.value = 1; saveSettings(); });
-        fetchTimeoutInput.addEventListener('change', () => { if (validateFetchTimeout()) { fetchTimeout = parseInt(fetchTimeoutInput.value) * 1000; saveSettings(); } else fetchTimeoutInput.value = fetchTimeout / 1000; });
-        debounceTimeInput.addEventListener('change', () => { if (validateDebounceTime()) { debounceTime = parseInt(debounceTimeInput.value) * 1000; saveSettings(); } else debounceTimeInput.value = debounceTime / 1000; });
-
-        [freqAboveInput, freqBelowInput, freqErrorInput].forEach(i => i.addEventListener('change', () => { if (validateSoundSettings()) { const t = i.id.split('freq')[1].toLowerCase(); soundSettings[`above_${t}`].frequency = parseFloat(i.value); } else { const t = i.id.split('freq')[1].toLowerCase(); i.value = soundSettings[`above_${t}`].frequency; } }));
-        [durAboveInput, durBelowInput, durErrorInput].forEach(i => i.addEventListener('change', () => { if (validateSoundSettings()) { const t = i.id.split('dur')[1].toLowerCase(); soundSettings[`above_${t}`].duration = parseFloat(i.value); } else { const t = i.id.split('dur')[1].toLowerCase(); i.value = soundSettings[`above_${t}`].duration; } }));
-        [typeAboveSelect, typeBelowSelect, typeErrorSelect].forEach(s => s.addEventListener('change', () => { const t = s.id.split('type')[1].toLowerCase(); soundSettings[`above_${t}`].type = s.value; }));
-
-        testAboveBtn.addEventListener('click', () => { if (validateSoundSettings()) { soundSettings.above_upper.frequency = parseFloat(freqAboveInput.value); soundSettings.above_upper.duration = parseFloat(durAboveInput.value); soundSettings.above_upper.type = typeAboveSelect.value; playSound('above_upper'); } else alert("Ошибка в настройках звука 'Цена выше'."); });
-        testBelowBtn.addEventListener('click', () => { if (validateSoundSettings()) { soundSettings.below_lower.frequency = parseFloat(freqBelowInput.value); soundSettings.below_lower.duration = parseFloat(durBelowInput.value); soundSettings.below_lower.type = typeBelowSelect.value; playSound('below_lower'); } else alert("Ошибка в настройках звука 'Цена ниже'."); });
-        testErrorBtn.addEventListener('click', () => { if (validateSoundSettings()) { soundSettings.all_error.frequency = parseFloat(freqErrorInput.value); soundSettings.all_error.duration = parseFloat(durErrorInput.value); soundSettings.all_error.type = typeErrorSelect.value; playSound('all_error'); } else alert("Ошибка в настройках звука 'Все ошибки'."); });
-
+        saveSettingsBtn.addEventListener('click', () => {
+             if (validateThresholds()) saveSettings();
+             else { alert("Проверьте пороги."); }
+        });
         startBtn.addEventListener('click', async () => {
             if (trackingInterval) {
                 clearInterval(trackingInterval);
@@ -1541,24 +1189,19 @@
                 log("[App] Отслеживание остановлено.");
                 return;
             }
-
-            if (!validateThresholds() || !validateDebounceTime() || !validateFetchTimeout()) {
+            if (!validateThresholds()) {
                  alert("Исправьте ошибки в настройках.");
                  return;
             }
-
-            initAudioContext();
-            if (!audioInitialized) { alert("Ошибка инициализации аудио."); return; }
-
-            if (validateThresholds() && validateDebounceTime() && validateFetchTimeout()) {
+            if (validateThresholds()) {
                  saveSettings();
                  loadSettings();
             } else {
                  loadSettings();
                  upperInput.value = upperThreshold; lowerInput.value = lowerThreshold;
-                 refreshIntervalInput.value = refreshInterval / 1000; fetchTimeoutInput.value = fetchTimeout / 1000; debounceTimeInput.value = debounceTime / 1000;
+                 refreshIntervalSlider.value = refreshInterval / 1000; fetchTimeoutSlider.value = fetchTimeout / 1000; debounceTimeSlider.value = debounceTime / 1000;
+                 refreshIntervalValue.textContent = refreshInterval / 1000; fetchTimeoutValue.textContent = fetchTimeout / 1000; debounceTimeValue.textContent = debounceTime / 1000;
             }
-
             isTrackingActive = true;
             startBtn.textContent = 'Остановить отслеживание';
             startBtn.classList.add('running');
@@ -1569,74 +1212,28 @@
             trackingInterval = setInterval(fetchPrices, refreshInterval);
             log("[App] Отслеживание начато.");
         });
-
-        saveSettingsBtn.addEventListener('click', () => {
-             if (validateThresholds() && validateSoundSettings() && validateDebounceTime() && validateFetchTimeout()) saveSettings();
-             else { let m = ""; if (!validateThresholds()) m += "Пороги.\n"; if (!validateSoundSettings()) m += "Звуки.\n"; if (!validateDebounceTime()) m += "Интервал уведомлений.\n"; if (!validateFetchTimeout()) m += "Таймаут запроса."; alert(m); }
-        });
-
-        addExchangeBtn.addEventListener('click', () => {
-            const sel = newExchangeSelect.value;
-            if (sel && !activeExchanges.includes(sel)) {
-                activeExchanges.push(sel);
-                updateExchangeListUI();
-                saveSettings();
-                updateExchangeDisplay(sel, null, true, true);
-            }
-        });
-
-        // --- НОВЫЕ ОБРАБОТЧИКИ ДЛЯ ЦВЕТОВ ---
-        // Применение цвета на лету при изменении любого поля
-        const colorInputs = [
-            bgColorInput, controlsBgInput, textColorInput,
-            alertBgInput, errorAlertBgInput, networkErrorAlertBgInput, notificationTextColorInput,
-            appBgStableInput, appBgDisconnectedInput, appBgAboveInput, appBgBelowInput, appBgStoppedInput,
-            chartLineColorInput
-        ];
-        colorInputs.forEach(input => {
-            input.addEventListener('input', () => {
-                const colors = getCurrentColors();
-                applyCustomColors(colors);
-                log(`[Colors] Цвет ${input.id} изменён и применён на лету.`);
-            });
-            // Сохранение при потере фокуса (change)
-            input.addEventListener('change', () => {
-                 saveCustomColors();
-                 log(`[Colors] Цвет ${input.id} сохранён при потере фокуса.`);
-            });
-        });
-
-        resetColorsBtn.addEventListener('click', resetColors);
-
         // --- ОБРАБОТЧИК КНОПКИ ПЕРЕКЛЮЧЕНИЯ ТЕМЫ (теперь в углу) ---
         toggleThemeBtn.addEventListener('click', toggleTheme);
-
         exportSettingsBtn.addEventListener('click', exportSettings);
-
         importSettingsBtn.addEventListener('click', () => {
             importSettingsInput.click();
         });
-
         importSettingsInput.addEventListener('change', (e) => {
             if (e.target.files.length > 0) {
                 importSettings(e.target.files[0]);
             }
         });
-
         resetStatsBtn.addEventListener('click', resetStats);
-
         clearChartBtn.addEventListener('click', clearChart);
-
         // --- ИНИЦИАЛИЗАЦИЯ ПРИ ЗАГРУЗКЕ ---
         loadSettings();
-        loadTheme(); // Загружает тему и цвета
+        loadTheme(); // Загружает тему
         loadStats();
-        updateExchangeListUI();
+        updateExchangeListsUI();
         activeExchanges.forEach(ex => updateExchangeDisplay(ex, null, true, true));
         updateCurrentStatusDisplay(currentStatus);
-        updateStatsDisplay(); // Обновляем дисплей статистики
+        updateStatsDisplay();
         drawChart(); // Рисуем график (даже если пустой)
-
         if (isTrackingActive) {
              log("[App] Обнаружен активный режим, запускаем...");
              setTimeout(() => {
@@ -1645,9 +1242,7 @@
                  }
              }, 100);
         }
-
-        log("[App] Приложение v3.6 инициализировано. Активные биржи:", activeExchanges);
+        log("[App] Приложение v3.6.1 инициализировано. Активные биржи:", activeExchanges);
     </script>
-
 </body>
 </html>
