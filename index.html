@@ -530,7 +530,7 @@
     <button id="toggleThemeBtn" title="Переключить тему">🌙</button>
     <!-- Перемещённый график в самое начало -->
     <div class="chart-controls">
-        <h2>График цены BTC</h2>
+        <!-- <h2>График цены BTC</h2> -->
         <div class="chart-container">
             <canvas id="priceChartCanvas" class="chart-canvas"></canvas>
         </div>
@@ -538,7 +538,7 @@
     </div>
     <!-- Новый блок для основного статуса, бирж, индикатора и кнопки запуска -->
     <div class="main-status-controls">
-        <h2>Статус отслеживания</h2>
+        <!-- <h2>Статус отслеживания</h2> -->
         <span class="activity-indicator" id="activityIndicator"></span>
         <div id="exchangesStatus"></div>
         <div id="currentStatusDisplay" class="current-status-display status-stopped">Статус: Остановлен</div>
@@ -546,7 +546,7 @@
         <span id="loadingIndicator" class="loading" style="display: none;">Инициализация аудио...</span>
     </div>
     <div class="controls">
-        <h2>Настройки отслеживания BTC</h2>
+        <!-- <h2>Настройки отслеживания BTC</h2> -->
         <label for="upperThreshold">Верхний порог (USD):</label>
         <input type="number" id="upperThreshold" value="111000" step="0.01" min="0">
         <div id="upperThresholdError" class="validation-message">Верхний порог не может быть ниже нижнего.</div>
@@ -571,6 +571,19 @@
         </div>
         <button id="saveSettingsBtn">Сохранить настройки</button>
     </div>
+    <div class="history-controls">
+        <h2>История цен (последние 20)</h2>
+        <div class="history-list" id="historyList">
+            <!-- История будет обновляться через JS -->
+        </div>
+    </div>
+    <div class="stats-controls">
+        <h2>Статистика</h2>
+        <div class="stats-display" id="statsDisplay">
+            <!-- Статистика будет обновляться через JS -->
+        </div>
+        <button id="resetStatsBtn">Сбросить статистику</button>
+    </div>
     <div class="sound-controls">
         <h2>Настройки звуков и уведомлений</h2>
         <div class="sound-setting-group">
@@ -593,22 +606,9 @@
         </div>
     </div>
     <div class="exchange-controls">
-        <h2>Управление биржами</h2>
+        <!-- <h2>Управление биржами</h2> -->
         <div id="activeExchangesList"></div>
         <div id="availableExchangesList"></div>
-    </div>
-    <div class="stats-controls">
-        <h2>Статистика</h2>
-        <div class="stats-display" id="statsDisplay">
-            <!-- Статистика будет обновляться через JS -->
-        </div>
-        <button id="resetStatsBtn">Сбросить статистику</button>
-    </div>
-    <div class="history-controls">
-        <h2>История цен (последние 20)</h2>
-        <div class="history-list" id="historyList">
-            <!-- История будет обновляться через JS -->
-        </div>
     </div>
     <!-- Перемещённый экспорт/импорт в самый конец -->
     <div class="export-controls">
