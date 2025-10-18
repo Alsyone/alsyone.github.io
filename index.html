@@ -533,16 +533,16 @@
         <!-- <h2>График цены BTC</h2> -->
         <div class="chart-container">
             <canvas id="priceChartCanvas" class="chart-canvas"></canvas>
-        </div>
-        <button id="clearChartBtn">Очистить график</button>
+            <button id="clearChartBtn">Очистить график</button>
+       </div>
     </div>
     <!-- Новый блок для основного статуса, бирж, индикатора и кнопки запуска -->
     <div class="main-status-controls">
         <!-- <h2>Статус отслеживания</h2> -->
-        <span class="activity-indicator" id="activityIndicator"></span>
+        <span class="activity-indicator" id="activityIndicator"></span><button id="startBtn">Начать отслеживание</button>
         <div id="exchangesStatus"></div>
         <div id="currentStatusDisplay" class="current-status-display status-stopped">Статус: Остановлен</div>
-        <button id="startBtn">Начать отслеживание</button>
+        
         <span id="loadingIndicator" class="loading" style="display: none;">Инициализация аудио...</span>
     </div>
     <div class="controls">
